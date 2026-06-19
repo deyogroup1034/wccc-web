@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Lora, Open_Sans } from "next/font/google";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SiteNav } from "@/components/site-nav";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const lora = Lora({
@@ -39,7 +41,9 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          {children}
+          <SiteNav />
+          <div className="flex flex-1 flex-col">{children}</div>
+          <SiteFooter />
           <Toaster />
         </ThemeProvider>
       </body>
