@@ -1,0 +1,13 @@
+# working docs (hand-maintained prose)
+docs/WCCC_Phase0_Backlog.md
+
+# build output / generated
+.next/
+.open-next/
+.wrangler/
+out/
+node_modules/
+package-lock.json
+next-env.d.ts
+cloudflare-env.d.ts
+worker-configuration.d.ts
