@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    // The Cloudflare Workers runtime has no sharp-based image optimizer, so
+    // serve images as-is. Revisit with Cloudflare Images in the SEO/launch pass.
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;

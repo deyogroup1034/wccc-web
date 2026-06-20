@@ -5,21 +5,21 @@ const PANTRYFRIEND_LOGIN_URL = "#";
 
 const FOOTER_COLUMNS = [
   {
-    title: "Services",
+    title: "Get Help",
     links: [
-      { label: "Food Pantry", href: "/services" },
-      { label: "Bill Assistance", href: "/services" },
-      { label: "Clothing", href: "/services" },
-      { label: "Prayer Support", href: "/services" },
+      { label: "Food Pantry", href: "/get-help" },
+      { label: "Bill Assistance", href: "/get-help" },
+      { label: "Clothing", href: "/get-help" },
+      { label: "Prayer Support", href: "/get-help" },
     ],
   },
   {
     title: "Get Involved",
     links: [
-      { label: "Volunteer", href: "/volunteer" },
+      { label: "Volunteer", href: "/get-involved" },
       { label: "Donate", href: "/donate" },
-      { label: "Partner With Us", href: "/partner" },
-      { label: "Church Drives", href: "/partner" },
+      { label: "Partner With Us", href: "/get-involved" },
+      { label: "Church Drives", href: "/get-involved" },
     ],
   },
   {
