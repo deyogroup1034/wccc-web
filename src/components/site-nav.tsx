@@ -3,6 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -17,7 +26,7 @@ const NAV_LINKS = [
  * Ported from the homepage prototype. On the homepage the nav is transparent
  * over the hero and transitions to solid navy on scroll. On every other route
  * (no hero) it stays solid navy, and we render a spacer so the fixed bar
- * doesn't overlap page content.
+ * doesn't overlap page content. Below `md`, links collapse into a Sheet drawer.
  */
 export function SiteNav() {
   const pathname = usePathname();
@@ -63,7 +72,7 @@ export function SiteNav() {
             </span>
           </Link>
 
-          <nav className="flex items-center gap-7">
+          <nav className="flex items-center gap-4 md:gap-7">
             <div className="hidden items-center gap-7 md:flex">
               {NAV_LINKS.map((link) => (
                 <Link
@@ -77,10 +86,60 @@ export function SiteNav() {
             </div>
             <Link
               href="/donate"
-              className="rounded-md bg-red px-6 py-2.5 font-sans text-[13px] font-bold tracking-[0.06em] text-white uppercase transition hover:-translate-y-px hover:shadow-[0_4px_16px_rgba(212,88,58,0.4)]"
+              className="hidden rounded-md bg-red px-6 py-2.5 font-sans text-[13px] font-bold tracking-[0.06em] text-white uppercase transition hover:-translate-y-px hover:shadow-[0_4px_16px_rgba(212,88,58,0.4)] md:inline-block"
             >
               Donate
             </Link>
+
+            {/* Mobile menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <button
+                  type="button"
+                  aria-label="Open menu"
+                  className="text-white transition-colors hover:text-gold md:hidden"
+                >
+                  <Menu className="size-6" />
+                </button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                showCloseButton={false}
+                className="w-72 gap-0 border-l-0 bg-navy p-0 text-white sm:max-w-xs"
+              >
+                <SheetHeader className="flex-row items-center justify-between border-b border-white/10 p-4">
+                  <SheetTitle className="font-serif text-base font-bold text-white">
+                    Menu
+                  </SheetTitle>
+                  <SheetClose
+                    aria-label="Close menu"
+                    className="rounded-md p-1 text-white/70 transition-colors hover:text-gold"
+                  >
+                    <X className="size-5" />
+                  </SheetClose>
+                </SheetHeader>
+                <nav className="flex flex-col gap-1 p-4">
+                  {NAV_LINKS.map((link) => (
+                    <SheetClose asChild key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="rounded-md px-3 py-3 font-sans text-base font-semibold text-white/85 transition-colors hover:bg-white/5 hover:text-gold"
+                      >
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                  <SheetClose asChild>
+                    <Link
+                      href="/donate"
+                      className="mt-3 rounded-md bg-red px-3 py-3 text-center font-sans text-sm font-bold tracking-[0.06em] text-white uppercase transition hover:opacity-90"
+                    >
+                      Donate
+                    </Link>
+                  </SheetClose>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </nav>
         </div>
       </header>
