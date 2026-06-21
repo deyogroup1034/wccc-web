@@ -69,16 +69,12 @@ export function SiteNav() {
               width={100}
               height={100}
               priority
-              className="h-14 w-auto shrink-0 md:h-20"
+              className="h-16 w-auto shrink-0 md:h-[5.5rem]"
             />
             {/* Wordmark hidden below md — mobile shows the emblem mark alone. */}
-            <span className="hidden leading-tight md:block">
-              <span className="block font-serif text-[30px] font-bold tracking-[0.01em] text-white">
-                Wylie Christian
-              </span>
-              <span className="block font-sans text-[13px] font-semibold tracking-[0.22em] text-white/70 uppercase">
-                Care Center
-              </span>
+            <span className="hidden font-serif text-[2.5rem] leading-[1.1] font-bold tracking-[0.01em] text-white md:block">
+              <span className="block">Wylie Christian</span>
+              <span className="block">Care Center</span>
             </span>
           </Link>
 

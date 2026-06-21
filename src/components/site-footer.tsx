@@ -48,9 +48,9 @@ export function SiteFooter() {
               alt=""
               width={100}
               height={100}
-              className="h-20 w-auto shrink-0"
+              className="h-16 w-auto shrink-0"
             />
-            <span className="font-serif text-2xl leading-[1.1] font-bold text-white">
+            <span className="font-serif text-[1.75rem] leading-[1.1] font-bold text-white">
               Wylie Christian
               <br />
               Care Center
