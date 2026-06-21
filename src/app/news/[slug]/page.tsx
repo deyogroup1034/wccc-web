@@ -9,9 +9,11 @@ import {
   getPublishedSlugs,
 } from "@/lib/news";
 
-export const dynamic = "force-static";
-export const dynamicParams = false;
-
+// generateStaticParams prerenders the known posts at build; other slugs render
+// on demand and 404 via getPublishedPost → notFound() (so drafts stay private).
+// We intentionally do NOT set dynamicParams=false: under OpenNext every request
+// is a cache MISS, and dynamicParams=false turns a MISS into a 404 for these
+// prerendered dynamic routes.
 type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
