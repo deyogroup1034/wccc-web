@@ -29,9 +29,9 @@ const NAV_LINKS = [
  * (no hero) it stays solid navy, and we render a spacer so the fixed bar
  * doesn't overlap page content. Below `md`, links collapse into a Sheet drawer.
  *
- * The reversed (white) logo reads on both the transparent-over-hero and the
- * navy-scrolled states; below `md` we show the emblem-only mark (the full
- * lockup is too wide).
+ * Brand lockup is the real emblem mark + a white Lora wordmark (the full logo
+ * lockup SVG is illegible at nav size and its wordmark color is unreliable via
+ * <img>). Below `md` the wordmark is hidden and the emblem mark stands alone.
  */
 export function SiteNav() {
   const pathname = usePathname();
@@ -54,31 +54,32 @@ export function SiteNav() {
           "fixed inset-x-0 top-0 z-50 transition-[background,box-shadow] duration-300",
           solid
             ? "bg-navy/95 shadow-[0_2px_20px_rgba(0,0,0,0.15)] backdrop-blur-md"
-            : "bg-transparent",
+            : "bg-gradient-to-b from-black/35 to-transparent",
         )}
       >
         <div className="mx-auto flex max-w-[1200px] items-center justify-between px-8 py-4">
           <Link
             href="/"
             aria-label="Wylie Christian Care Center — home"
-            className="flex items-center"
+            className="flex items-center gap-3"
           >
-            <Image
-              src="/brand/wccc-logo-reversed.svg"
-              alt=""
-              width={150}
-              height={100}
-              priority
-              className="hidden h-14 w-auto md:block"
-            />
             <Image
               src="/brand/wccc-logo-mark.svg"
               alt=""
               width={100}
               height={100}
               priority
-              className="h-10 w-auto md:hidden"
+              className="h-11 w-auto shrink-0"
             />
+            {/* Wordmark hidden below md — mobile shows the emblem mark alone. */}
+            <span className="hidden leading-tight md:block">
+              <span className="block font-serif text-[18px] font-bold tracking-[0.01em] text-white">
+                Wylie Christian
+              </span>
+              <span className="block font-sans text-[10px] font-semibold tracking-[0.18em] text-white/70 uppercase">
+                Care Center
+              </span>
+            </span>
           </Link>
 
           <nav className="flex items-center gap-4 md:gap-7">
@@ -106,7 +107,11 @@ export function SiteNav() {
                 <button
                   type="button"
                   aria-label="Open menu"
-                  className="text-white transition-colors hover:text-gold md:hidden"
+                  className={cn(
+                    "rounded-md p-1.5 text-white transition-colors hover:text-gold md:hidden",
+                    !solid &&
+                      "bg-white/10 ring-1 ring-white/25 backdrop-blur-sm",
+                  )}
                 >
                   <Menu className="size-6" />
                 </button>
