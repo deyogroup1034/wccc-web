@@ -61,7 +61,7 @@ export function SiteNav() {
           <Link
             href="/"
             aria-label="Wylie Christian Care Center — home"
-            className="flex items-center gap-3"
+            className="flex items-center gap-4"
           >
             <Image
               src="/brand/wccc-logo-mark.svg"
@@ -69,14 +69,14 @@ export function SiteNav() {
               width={100}
               height={100}
               priority
-              className="h-11 w-auto shrink-0"
+              className="h-14 w-auto shrink-0 md:h-20"
             />
             {/* Wordmark hidden below md — mobile shows the emblem mark alone. */}
             <span className="hidden leading-tight md:block">
-              <span className="block font-serif text-[18px] font-bold tracking-[0.01em] text-white">
+              <span className="block font-serif text-[30px] font-bold tracking-[0.01em] text-white">
                 Wylie Christian
               </span>
-              <span className="block font-sans text-[10px] font-semibold tracking-[0.18em] text-white/70 uppercase">
+              <span className="block font-sans text-[13px] font-semibold tracking-[0.22em] text-white/70 uppercase">
                 Care Center
               </span>
             </span>

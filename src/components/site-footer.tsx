@@ -42,15 +42,15 @@ export function SiteFooter() {
     <footer className="bg-[#0C1F33] px-8 pt-16 pb-8">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <div className="mb-4 flex items-center gap-3">
+          <div className="mb-5 flex items-center gap-3.5">
             <Image
               src="/brand/wccc-logo-mark.svg"
               alt=""
               width={100}
               height={100}
-              className="h-12 w-auto shrink-0"
+              className="h-20 w-auto shrink-0"
             />
-            <span className="font-serif text-lg leading-[1.15] font-bold text-white">
+            <span className="font-serif text-2xl leading-[1.1] font-bold text-white">
               Wylie Christian
               <br />
               Care Center
