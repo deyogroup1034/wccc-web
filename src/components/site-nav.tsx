@@ -61,7 +61,7 @@ export function SiteNav() {
           <Link
             href="/"
             aria-label="Wylie Christian Care Center — home"
-            className="flex items-center gap-4"
+            className="flex items-center gap-3 md:gap-4"
           >
             <Image
               src="/brand/wccc-logo-mark.svg"
@@ -69,10 +69,10 @@ export function SiteNav() {
               width={100}
               height={100}
               priority
-              className="h-20 w-auto shrink-0 md:h-[6.5rem]"
+              className="h-12 w-auto shrink-0 md:h-[6.5rem]"
             />
-            {/* Wordmark hidden below md — mobile shows the emblem mark alone. */}
-            <span className="hidden font-serif text-[2.25rem] leading-[1.1] font-bold tracking-[0.01em] text-white md:block">
+            {/* Smaller wordmark on mobile, full size at md+. */}
+            <span className="font-serif text-[17px] leading-[1.1] font-bold tracking-[0.01em] text-white md:text-[2.25rem]">
               <span className="block">Wylie Christian</span>
               <span className="block">Care Center</span>
             </span>
@@ -119,14 +119,18 @@ export function SiteNav() {
               >
                 <SheetHeader className="flex-row items-center justify-between border-b border-white/10 p-4">
                   <SheetTitle asChild>
-                    <span className="flex items-center">
+                    <span className="flex items-center gap-2.5">
                       <Image
                         src="/brand/wccc-logo-mark.svg"
-                        alt="Wylie Christian Care Center"
+                        alt=""
                         width={100}
                         height={100}
-                        className="h-10 w-auto"
+                        className="h-11 w-auto shrink-0"
                       />
+                      <span className="font-serif text-[15px] leading-[1.1] font-bold text-white">
+                        <span className="block">Wylie Christian</span>
+                        <span className="block">Care Center</span>
+                      </span>
                     </span>
                   </SheetTitle>
                   <SheetClose
