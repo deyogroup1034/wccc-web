@@ -6,8 +6,12 @@ const resend = new Resend(process.env.RESEND_API_KEY);
  * Default sender. Override per-call or via RESEND_FROM_EMAIL once the
  * sending domain is verified in Resend (Phase 1 contact form).
  */
+// `onboarding@resend.dev` works with any Resend API key for testing (it only
+// delivers to the account owner's email). Swap RESEND_FROM_EMAIL to a verified
+// sending domain once it's set up (P1-11).
 const DEFAULT_FROM =
-  process.env.RESEND_FROM_EMAIL ?? "WCCC <noreply@example.com>";
+  process.env.RESEND_FROM_EMAIL ??
+  "Wylie Christian Care Center <onboarding@resend.dev>";
 
 export type SendEmailParams = {
   to: string | string[];
