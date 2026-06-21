@@ -72,10 +72,10 @@ export function SiteNav() {
               width={100}
               height={100}
               priority
-              className="h-14 w-auto shrink-0 md:h-[6.5rem]"
+              className="h-14 w-auto shrink-0 md:h-[7.5rem]"
             />
             {/* Smaller wordmark on mobile, full size at md+. */}
-            <span className="font-serif text-[17px] leading-[1.1] font-bold tracking-[0.01em] text-white md:text-[2.25rem]">
+            <span className="font-serif text-[17px] leading-[1.1] font-bold tracking-[0.01em] text-white md:text-[2em]">
               <span className="block">Wylie Christian</span>
               <span className="block">Care Center</span>
             </span>
