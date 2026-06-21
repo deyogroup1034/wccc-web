@@ -51,7 +51,10 @@ export function SiteNav() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background,box-shadow] duration-300",
+          "top-0 z-50 transition-[background,box-shadow] duration-300",
+          // Fixed (overlays the hero) on the homepage; sticky in normal flow on
+          // every other route so the tall bar never overlaps page content.
+          isHome ? "fixed inset-x-0" : "sticky",
           solid
             ? "bg-navy/95 shadow-[0_2px_20px_rgba(0,0,0,0.15)] backdrop-blur-md"
             : "bg-gradient-to-b from-black/35 to-transparent",
@@ -165,7 +168,6 @@ export function SiteNav() {
           </nav>
         </div>
       </header>
-      {!isHome && <div aria-hidden className="h-[72px]" />}
     </>
   );
 }
