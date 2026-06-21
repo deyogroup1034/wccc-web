@@ -87,10 +87,9 @@ const PROGRAMS: {
 ];
 
 const QUALIFIES = [
-  "You live in our service area (the seven communities below)",
-  "A valid photo ID for each adult in the household",
-  "Proof of current address (a recent bill or lease)",
-  "Households facing financial hardship are welcome",
+  "You live in one of our seven service-area communities",
+  "Your household is facing financial hardship",
+  "Everyone is welcome — we serve with no judgment",
 ];
 
 const BRING = [
@@ -246,65 +245,116 @@ export default function GetHelpPage() {
         </div>
       </section>
 
-      {/* ── Hours + Service area ── */}
+      {/* ── Visit us: address, hours, map ── */}
       <section className="bg-warm-white px-8 py-24">
-        <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 md:grid-cols-[1fr_1.3fr]">
-          {/* Hours */}
-          <div className="rounded-2xl border border-[#E8E4DE] bg-white p-8">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-12 text-center">
             <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
-              Hours
+              Visit Us
             </div>
-            <h2 className="mb-6 font-serif text-2xl font-bold text-navy">
-              When we&apos;re open
+            <h2 className="font-serif text-[34px] leading-[1.3] font-bold text-navy">
+              When we&apos;re open &amp; where to find us
             </h2>
-            {/* TODO: real open hours from WCCC */}
-            <dl className="space-y-3">
-              {[
-                ["Monday – Thursday", "9:00 am – 12:00 pm"],
-                ["Friday", "By appointment"],
-                ["Saturday – Sunday", "Closed"],
-              ].map(([day, time]) => (
-                <div
-                  key={day}
-                  className="flex items-center justify-between border-b border-[#E8E4DE] pb-3 last:border-0"
-                >
-                  <dt className="font-sans text-[15px] font-semibold text-charcoal">
-                    {day}
-                  </dt>
-                  <dd className="font-sans text-[15px] text-[#666]">{time}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-5 font-sans text-[13px] text-[#666] italic">
-              Hours are subject to change on holidays — call ahead if
-              you&apos;re unsure.
-            </p>
           </div>
 
-          {/* Service area */}
-          <div>
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
-              Service Area
-            </div>
-            <h2 className="mb-4 font-serif text-[30px] leading-[1.3] font-bold text-navy">
-              Serving seven communities
-            </h2>
-            <p className="mb-8 max-w-[520px] font-sans text-base leading-[1.8] text-charcoal">
-              We serve families who live in and around these communities in the
-              Wylie, Texas area. Not sure if you&apos;re in our area? Give us a
-              call and we&apos;ll help.
-            </p>
-            <ul className="flex flex-wrap gap-3">
-              {SERVICE_AREA.map((city) => (
-                <li
-                  key={city}
-                  className="rounded-full border border-navy/15 bg-navy/[0.04] px-5 py-2.5 font-sans text-[15px] font-semibold text-navy"
+          <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
+            {/* Address + hours */}
+            <div className="flex flex-col gap-6">
+              <div className="rounded-2xl border border-[#E8E4DE] bg-white p-8">
+                <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+                  Address
+                </div>
+                {/* TODO: real street address from Audrey (P1-11). */}
+                <address className="font-sans not-italic">
+                  <div className="font-serif text-xl font-bold text-navy">
+                    Wylie Christian Care Center
+                  </div>
+                  <div className="mt-2 text-[15px] leading-[1.7] text-charcoal">
+                    123 Main St
+                    <br />
+                    Wylie, TX 75098
+                  </div>
+                </address>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Wylie+Christian+Care+Center+Wylie+TX"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block font-sans text-sm font-bold text-evergreen transition-all hover:underline"
                 >
-                  {city}
-                </li>
-              ))}
-            </ul>
+                  Get directions →
+                </a>
+              </div>
+
+              <div className="rounded-2xl border border-[#E8E4DE] bg-white p-8">
+                <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+                  Hours
+                </div>
+                {/* TODO: real open hours from WCCC */}
+                <dl className="space-y-3">
+                  {[
+                    ["Monday – Thursday", "9:00 am – 12:00 pm"],
+                    ["Friday", "By appointment"],
+                    ["Saturday – Sunday", "Closed"],
+                  ].map(([day, time]) => (
+                    <div
+                      key={day}
+                      className="flex items-center justify-between border-b border-[#E8E4DE] pb-3 last:border-0"
+                    >
+                      <dt className="font-sans text-[15px] font-semibold text-charcoal">
+                        {day}
+                      </dt>
+                      <dd className="font-sans text-[15px] text-[#666]">
+                        {time}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-5 font-sans text-[13px] text-[#666] italic">
+                  Hours are subject to change on holidays — call ahead if
+                  you&apos;re unsure.
+                </p>
+              </div>
+            </div>
+
+            {/* Map */}
+            {/* TODO: update the embed query to Audrey's confirmed street address. */}
+            <div className="min-h-[360px] overflow-hidden rounded-2xl border border-[#E8E4DE] bg-white">
+              <iframe
+                title="Map showing the Wylie, Texas area"
+                src="https://maps.google.com/maps?q=Wylie%2C%20TX&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                className="size-full min-h-[360px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Service area ── */}
+      <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            Service Area
+          </div>
+          <h2 className="mb-4 font-serif text-[30px] leading-[1.3] font-bold text-navy">
+            Serving seven communities
+          </h2>
+          <p className="mb-8 max-w-[520px] font-sans text-base leading-[1.8] text-charcoal">
+            We serve families who live in and around these communities in the
+            Wylie, Texas area. Not sure if you&apos;re in our area? Give us a
+            call and we&apos;ll help.
+          </p>
+          <ul className="flex flex-wrap gap-3">
+            {SERVICE_AREA.map((city) => (
+              <li
+                key={city}
+                className="rounded-full border border-navy/15 bg-navy/[0.04] px-5 py-2.5 font-sans text-[15px] font-semibold text-navy"
+              >
+                {city}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
