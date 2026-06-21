@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 // TODO: point at the deployed PantryFriend staff app login once its URL is known.
@@ -41,10 +42,14 @@ export function SiteFooter() {
     <footer className="bg-[#0C1F33] px-8 pt-16 pb-8">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <div className="font-serif text-xl font-bold text-white">
-            Wylie Christian Care Center
-          </div>
-          <div className="mt-1 mb-4 font-sans text-xs font-semibold tracking-[0.12em] text-gold uppercase">
+          <Image
+            src="/brand/wccc-logo-reversed.svg"
+            alt="Wylie Christian Care Center"
+            width={150}
+            height={100}
+            className="mb-4 h-16 w-auto"
+          />
+          <div className="mb-4 font-sans text-xs font-semibold tracking-[0.12em] text-gold uppercase">
             Bridging the Gap and Restoring Hope
           </div>
           <p className="max-w-[300px] font-sans text-sm leading-relaxed text-white/50">

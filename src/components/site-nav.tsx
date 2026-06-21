@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -27,6 +28,10 @@ const NAV_LINKS = [
  * over the hero and transitions to solid navy on scroll. On every other route
  * (no hero) it stays solid navy, and we render a spacer so the fixed bar
  * doesn't overlap page content. Below `md`, links collapse into a Sheet drawer.
+ *
+ * The reversed (white) logo reads on both the transparent-over-hero and the
+ * navy-scrolled states; below `md` we show the emblem-only mark (the full
+ * lockup is too wide).
  */
 export function SiteNav() {
   const pathname = usePathname();
@@ -53,23 +58,27 @@ export function SiteNav() {
         )}
       >
         <div className="mx-auto flex max-w-[1200px] items-center justify-between px-8 py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <span
-              className={cn(
-                "flex size-10 items-center justify-center rounded-full font-serif text-lg font-bold transition-colors",
-                solid ? "bg-gold text-navy" : "bg-white/20 text-white",
-              )}
-            >
-              W
-            </span>
-            <span className="leading-tight">
-              <span className="block font-serif text-[17px] font-bold tracking-[0.02em] text-white">
-                Wylie Christian
-              </span>
-              <span className="block font-sans text-[10px] font-semibold tracking-[0.15em] text-white/70 uppercase">
-                Care Center
-              </span>
-            </span>
+          <Link
+            href="/"
+            aria-label="Wylie Christian Care Center — home"
+            className="flex items-center"
+          >
+            <Image
+              src="/brand/wccc-logo-reversed.svg"
+              alt=""
+              width={150}
+              height={100}
+              priority
+              className="hidden h-14 w-auto md:block"
+            />
+            <Image
+              src="/brand/wccc-logo-mark.svg"
+              alt=""
+              width={100}
+              height={100}
+              priority
+              className="h-10 w-auto md:hidden"
+            />
           </Link>
 
           <nav className="flex items-center gap-4 md:gap-7">
@@ -108,8 +117,16 @@ export function SiteNav() {
                 className="w-72 gap-0 border-l-0 bg-navy p-0 text-white sm:max-w-xs"
               >
                 <SheetHeader className="flex-row items-center justify-between border-b border-white/10 p-4">
-                  <SheetTitle className="font-serif text-base font-bold text-white">
-                    Menu
+                  <SheetTitle asChild>
+                    <span className="flex items-center">
+                      <Image
+                        src="/brand/wccc-logo-mark.svg"
+                        alt="Wylie Christian Care Center"
+                        width={100}
+                        height={100}
+                        className="h-10 w-auto"
+                      />
+                    </span>
                   </SheetTitle>
                   <SheetClose
                     aria-label="Close menu"
