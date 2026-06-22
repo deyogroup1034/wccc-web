@@ -73,8 +73,20 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
+          <a
+            href="#main-content"
+            className="sr-only font-sans focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-navy focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          >
+            Skip to main content
+          </a>
           <SiteNav />
-          <div className="flex flex-1 flex-col">{children}</div>
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="flex flex-1 flex-col"
+          >
+            {children}
+          </main>
           <SiteFooter />
           <Toaster />
         </ThemeProvider>

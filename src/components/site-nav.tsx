@@ -87,7 +87,8 @@ export function SiteNav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-sans text-sm font-semibold tracking-[0.04em] text-white/85 transition-colors hover:text-gold"
+                  aria-current={pathname === link.href ? "page" : undefined}
+                  className="font-sans text-sm font-semibold tracking-[0.04em] text-white/85 transition-colors hover:text-gold aria-[current]:text-gold"
                 >
                   {link.label}
                 </Link>
@@ -148,7 +149,10 @@ export function SiteNav() {
                     <SheetClose asChild key={link.href}>
                       <Link
                         href={link.href}
-                        className="rounded-md px-3 py-3 font-sans text-base font-semibold text-white/85 transition-colors hover:bg-white/5 hover:text-gold"
+                        aria-current={
+                          pathname === link.href ? "page" : undefined
+                        }
+                        className="rounded-md px-3 py-3 font-sans text-base font-semibold text-white/85 transition-colors hover:bg-white/5 hover:text-gold aria-[current]:text-gold"
                       >
                         {link.label}
                       </Link>
