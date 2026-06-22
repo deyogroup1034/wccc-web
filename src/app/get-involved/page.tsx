@@ -133,7 +133,7 @@ export default function GetInvolvedPage() {
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-14 max-w-[680px]">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Partner With Us
             </div>
             <h2 className="mb-5 font-serif text-[34px] leading-[1.3] font-bold text-navy">

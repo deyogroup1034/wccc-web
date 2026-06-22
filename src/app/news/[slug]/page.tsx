@@ -62,7 +62,7 @@ export default async function NewsPostPage({ params }: Params) {
         <div className="mx-auto max-w-[760px]">
           <Link
             href="/news"
-            className="font-sans text-sm font-semibold text-gold transition-all hover:underline"
+            className="font-sans text-sm font-semibold text-gold-bright transition-all hover:underline"
           >
             ← Back to News
           </Link>

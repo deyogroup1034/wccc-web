@@ -57,7 +57,7 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Left: details + map */}
           <div>
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Reach Us
             </div>
             <h2 className="mb-8 font-serif text-[30px] leading-[1.3] font-bold text-navy">

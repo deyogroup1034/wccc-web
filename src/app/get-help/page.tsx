@@ -178,7 +178,7 @@ export default function GetHelpPage() {
       <section className="bg-warm-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-14 text-center">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               How We Help
             </div>
             <h2 className="font-serif text-[34px] leading-[1.3] font-bold text-navy">
@@ -226,7 +226,7 @@ export default function GetHelpPage() {
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-16 md:grid-cols-2">
           <div>
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Eligibility
             </div>
             <h2 className="mb-6 font-serif text-[30px] leading-[1.3] font-bold text-navy">
@@ -235,7 +235,7 @@ export default function GetHelpPage() {
             <CheckList items={QUALIFIES} />
           </div>
           <div>
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Come Prepared
             </div>
             <h2 className="mb-6 font-serif text-[30px] leading-[1.3] font-bold text-navy">
@@ -250,7 +250,7 @@ export default function GetHelpPage() {
       <section className="bg-warm-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-12 text-center">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Visit Us
             </div>
             <h2 className="font-serif text-[34px] leading-[1.3] font-bold text-navy">
@@ -262,7 +262,7 @@ export default function GetHelpPage() {
             {/* Address + hours */}
             <div className="flex flex-col gap-6">
               <div className="rounded-2xl border border-[#E8E4DE] bg-white p-8">
-                <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+                <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
                   Address
                 </div>
                 {/* TODO: real street address from Audrey (P1-11). */}
@@ -287,7 +287,7 @@ export default function GetHelpPage() {
               </div>
 
               <div className="rounded-2xl border border-[#E8E4DE] bg-white p-8">
-                <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+                <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
                   Hours
                 </div>
                 {/* TODO: real open hours from WCCC */}
@@ -335,7 +335,7 @@ export default function GetHelpPage() {
       {/* ── Service area ── */}
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
-          <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+          <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
             Service Area
           </div>
           <h2 className="mb-4 font-serif text-[30px] leading-[1.3] font-bold text-navy">

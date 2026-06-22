@@ -63,7 +63,7 @@ export function ProgramsPreview() {
     <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-14 text-center">
-          <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+          <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
             How We Help
           </div>
           <h2 className="font-serif text-[34px] leading-[1.3] font-bold text-navy">

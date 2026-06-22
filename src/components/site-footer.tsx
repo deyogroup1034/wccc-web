@@ -56,7 +56,7 @@ export function SiteFooter() {
               Care Center
             </span>
           </div>
-          <div className="mb-4 font-sans text-xs font-semibold tracking-[0.12em] text-gold uppercase">
+          <div className="mb-4 font-sans text-xs font-semibold tracking-[0.12em] text-gold-bright uppercase">
             Bridging the Gap and Restoring Hope
           </div>
           <p className="max-w-[300px] font-sans text-sm leading-relaxed text-white/50">

@@ -93,7 +93,7 @@ export default function AboutPage() {
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mx-auto mb-14 max-w-[760px] text-center">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Our Mission
             </div>
             <h2 className="mb-6 font-serif text-[34px] leading-[1.3] font-bold text-navy">
@@ -131,7 +131,7 @@ export default function AboutPage() {
       <section className="bg-warm-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-14 text-center">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Our People
             </div>
             <h2 className="font-serif text-[34px] leading-[1.3] font-bold text-navy">
@@ -162,7 +162,7 @@ export default function AboutPage() {
       <section className="bg-[linear-gradient(135deg,#1B3A5C,#0F2840)] px-8 py-20">
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 md:grid-cols-[1.4fr_1fr]">
           <div>
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-bright uppercase">
               Financial Transparency
             </div>
             <h2 className="mb-5 font-serif text-3xl leading-[1.3] font-bold text-white">

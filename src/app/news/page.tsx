@@ -52,7 +52,7 @@ export default function NewsPage() {
                   >
                     <time
                       dateTime={post.frontmatter.date}
-                      className="font-sans text-[12px] font-bold tracking-[0.12em] text-gold uppercase"
+                      className="font-sans text-[12px] font-bold tracking-[0.12em] text-gold-ink uppercase"
                     >
                       {formatPostDate(post.frontmatter.date)}
                     </time>

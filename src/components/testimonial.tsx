@@ -14,7 +14,7 @@ export function Testimonial() {
           didn&apos;t just help with the bill — they prayed with me and made me
           feel like I mattered. That changed everything.
         </blockquote>
-        <figcaption className="font-sans text-sm font-semibold tracking-[0.08em] text-gold">
+        <figcaption className="font-sans text-sm font-semibold tracking-[0.08em] text-gold-bright">
           — A WCCC Client
         </figcaption>
       </figure>

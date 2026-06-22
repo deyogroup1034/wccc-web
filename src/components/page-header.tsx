@@ -12,7 +12,7 @@ export function PageHeader({ eyebrow, title, intro }: PageHeaderProps) {
     <section className="bg-[linear-gradient(135deg,#1B3A5C,#0F2840)] px-8 py-20">
       <div className="mx-auto max-w-[1200px]">
         {eyebrow && (
-          <div className="mb-4 flex items-center gap-3 font-sans text-xs font-bold tracking-[0.2em] text-gold uppercase">
+          <div className="mb-4 flex items-center gap-3 font-sans text-xs font-bold tracking-[0.2em] text-gold-bright uppercase">
             <span className="inline-block h-0.5 w-8 bg-gold" />
             {eyebrow}
           </div>

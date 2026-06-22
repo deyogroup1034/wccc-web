@@ -67,7 +67,7 @@ export default function DonatePage() {
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-14 text-center">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Ways to Give
             </div>
             <h2 className="font-serif text-[34px] leading-[1.3] font-bold text-navy">
@@ -142,7 +142,7 @@ export default function DonatePage() {
             <div className="mx-auto mb-5 flex size-14 items-center justify-center rounded-full bg-gold/15 text-gold">
               <HeartIcon className="size-7" />
             </div>
-            <div className="mb-2 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-2 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Coming Soon
             </div>
             <h2 className="mb-4 font-serif text-[28px] leading-[1.3] font-bold text-navy">
@@ -164,7 +164,7 @@ export default function DonatePage() {
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-12 max-w-[680px]">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold uppercase">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
               Can&apos;t Give Cash?
             </div>
             <h2 className="mb-4 font-serif text-[34px] leading-[1.3] font-bold text-navy">

@@ -19,7 +19,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-8 pt-[140px] pb-20">
         <div className="max-w-[720px]">
-          <div className="mb-5 flex items-center gap-3 font-sans text-xs font-bold tracking-[0.2em] text-gold uppercase">
+          <div className="mb-5 flex items-center gap-3 font-sans text-xs font-bold tracking-[0.2em] text-gold-bright uppercase">
             <span className="inline-block h-0.5 w-8 bg-gold" />
             Bridging the Gap and Restoring Hope
           </div>

@@ -45,6 +45,10 @@
   --color-navy: #1b3a5c;
   --color-evergreen: #2e7d4f;
   --color-gold: #c5922e;
+  /* Accessible gold variants for small text (WCAG AA): gold-ink on light
+     backgrounds, gold-bright on navy. Bright #c5922e stays for buttons/accents. */
+  --color-gold-ink: #856312;
+  --color-gold-bright: #d4a43d;
   --color-red: #d4583a;
   --color-warm-white: #f5f1eb;
   --color-cream: #faf8f4;
