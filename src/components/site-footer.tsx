@@ -87,12 +87,20 @@ export function SiteFooter() {
         <span className="font-sans text-xs text-white/30">
           © 2026 Wylie Christian Care Center. All rights reserved.
         </span>
-        <Link
-          href={PANTRYFRIEND_LOGIN_URL}
-          className="font-sans text-xs text-white/30 transition-colors hover:text-gold"
-        >
-          PantryFriend Login →
-        </Link>
+        <div className="flex items-center gap-5">
+          <Link
+            href="/privacy"
+            className="font-sans text-xs text-white/30 transition-colors hover:text-gold"
+          >
+            Privacy
+          </Link>
+          <Link
+            href={PANTRYFRIEND_LOGIN_URL}
+            className="font-sans text-xs text-white/30 transition-colors hover:text-gold"
+          >
+            PantryFriend Login →
+          </Link>
+        </div>
       </div>
     </footer>
   );
