@@ -13,9 +13,16 @@ export const SITE_TAGLINE = "Bridging the Gap and Restoring Hope";
 export const SITE_DESCRIPTION =
   "Wylie Christian Care Center is a 501(c)(3) nonprofit providing emergency assistance, food, and clothing to families in crisis across seven communities in the Wylie, Texas area.";
 
-// TODO (P1-11): confirm real phone/email with Audrey + Ron.
+// TODO (P1-11): confirm real phone/email/address with Audrey + Ron.
 export const ORG_PHONE = "+1-972-555-0190";
 export const ORG_EMAIL = "info@wyliechristiancare.org";
+export const ORG_ADDRESS = {
+  street: "123 Main St",
+  locality: "Wylie",
+  region: "TX",
+  postalCode: "75098",
+  country: "US",
+};
 
 export const SERVICE_AREA = [
   "Wylie",

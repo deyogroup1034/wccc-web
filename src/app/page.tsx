@@ -8,6 +8,7 @@ import { GetInvolvedPreview } from "@/components/get-involved-preview";
 import { Testimonial } from "@/components/testimonial";
 import {
   absoluteUrl,
+  ORG_ADDRESS,
   ORG_EMAIL,
   ORG_PHONE,
   SERVICE_AREA,
@@ -30,6 +31,14 @@ const orgJsonLd = {
   logo: absoluteUrl("/brand/wccc-logo-full.png"),
   image: absoluteUrl("/og.png"),
   description: SITE_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: ORG_ADDRESS.street,
+    addressLocality: ORG_ADDRESS.locality,
+    addressRegion: ORG_ADDRESS.region,
+    postalCode: ORG_ADDRESS.postalCode,
+    addressCountry: ORG_ADDRESS.country,
+  },
   areaServed: SERVICE_AREA.map((city) => ({
     "@type": "City",
     name: `${city}, TX`,
