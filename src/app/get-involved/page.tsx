@@ -3,7 +3,8 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
-  title: "Get Involved — Wylie Christian Care Center",
+  title: "Get Involved",
+  alternates: { canonical: "/get-involved" },
   description:
     "Volunteer your time, partner your church or business, or organize a food drive for Wylie Christian Care Center. Here's how to help.",
 };

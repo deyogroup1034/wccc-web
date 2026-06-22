@@ -3,7 +3,8 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
-  title: "Donate — Wylie Christian Care Center",
+  title: "Donate",
+  alternates: { canonical: "/donate" },
   description:
     "Support Wylie Christian Care Center. Give by check or in person today — every gift goes directly to serving families in crisis. Online giving coming soon.",
 };

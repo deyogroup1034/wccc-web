@@ -3,7 +3,8 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Wylie Christian Care Center",
+  title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
   description:
     "How Wylie Christian Care Center handles information collected through this website, in plain language.",
 };

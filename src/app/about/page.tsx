@@ -3,7 +3,8 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
-  title: "About — Wylie Christian Care Center",
+  title: "About",
+  alternates: { canonical: "/about" },
   description:
     "Wylie Christian Care Center is a 501(c)(3) nonprofit serving families in crisis across seven communities in the Wylie, Texas area.",
 };

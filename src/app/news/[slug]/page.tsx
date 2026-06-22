@@ -26,20 +26,24 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!post) return {};
 
   const { title, summary, cover } = post.frontmatter;
+  const images = [cover ?? "/og.png"];
   return {
-    title: `${title} — Wylie Christian Care Center`,
+    title,
     description: summary,
+    alternates: { canonical: `/news/${slug}` },
     openGraph: {
       title,
       description: summary,
       type: "article",
+      url: `/news/${slug}`,
       publishedTime: post.frontmatter.date,
-      ...(cover ? { images: [{ url: cover }] } : {}),
+      images,
     },
     twitter: {
-      card: cover ? "summary_large_image" : "summary",
+      card: "summary_large_image",
       title,
       description: summary,
+      images,
     },
   };
 }

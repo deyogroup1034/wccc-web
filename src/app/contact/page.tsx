@@ -3,7 +3,8 @@ import { PageHeader } from "@/components/page-header";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact — Wylie Christian Care Center",
+  title: "Contact",
+  alternates: { canonical: "/contact" },
   description:
     "Get in touch with Wylie Christian Care Center. Call, email, or send us a message. For urgent help, calling is fastest.",
 };

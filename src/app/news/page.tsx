@@ -4,7 +4,8 @@ import { PageHeader } from "@/components/page-header";
 import { formatPostDate, getPublishedPosts } from "@/lib/news";
 
 export const metadata: Metadata = {
-  title: "News & Events — Wylie Christian Care Center",
+  title: "News & Events",
+  alternates: { canonical: "/news" },
   description:
     "Updates, needs, and events from Wylie Christian Care Center — how we're serving families across the Wylie, Texas area.",
 };

@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 import { PageHeader } from "@/components/page-header";
 
 export const metadata: Metadata = {
-  title: "Get Help — Wylie Christian Care Center",
+  title: "Get Help",
+  alternates: { canonical: "/get-help" },
   description:
     "Emergency bill assistance, a food pantry, clothing, and prayer support for families in the Wylie, Texas area. Who qualifies, what to bring, hours, and our service area.",
 };
