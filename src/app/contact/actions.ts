@@ -2,16 +2,15 @@
 
 import { sendEmail } from "@/lib/email";
 import { contactSchema, reasonLabel } from "@/lib/validation/contact";
+import { ORG_EMAIL, ORG_PHONE_DISPLAY } from "@/lib/site";
 
 export type ContactResult = { ok: true } | { ok: false; error: string };
 
-// TODO (P1-11): set CONTACT_TO_EMAIL to WCCC's real inbox. While testing with
-// Resend's onboarding domain, this must be the Resend account owner's email.
-const CONTACT_TO =
-  process.env.CONTACT_TO_EMAIL ?? "info@wyliechristiancare.org";
+// Destination inbox for website messages. Live delivery still needs
+// RESEND_API_KEY + a verified domain (separate setup) before mail flows.
+const CONTACT_TO = process.env.CONTACT_TO_EMAIL ?? ORG_EMAIL;
 
-const GENERIC_ERROR =
-  "Sorry — we couldn't send your message right now. Please call us at (972) 555-0190 or try again later.";
+const GENERIC_ERROR = `Sorry — we couldn't send your message right now. Please call us at ${ORG_PHONE_DISPLAY} or try again later.`;
 
 export async function sendContactMessage(
   input: unknown,

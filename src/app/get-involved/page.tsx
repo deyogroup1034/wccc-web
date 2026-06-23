@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 
@@ -90,6 +91,15 @@ export default function GetInvolvedPage() {
       {/* ── Volunteer ── */}
       <section className="bg-warm-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
+          <div className="relative mb-14 aspect-[21/9] overflow-hidden rounded-2xl border border-[#E8E4DE]">
+            <Image
+              src="/get-involved-volunteers.jpg"
+              alt="Wylie Christian Care Center volunteers serving families"
+              fill
+              sizes="(min-width: 1200px) 1136px, 100vw"
+              className="object-cover"
+            />
+          </div>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_1.2fr] md:items-center">
             <div>
               <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-evergreen uppercase">

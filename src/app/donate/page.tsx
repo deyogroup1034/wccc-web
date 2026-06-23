@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
+import {
+  CHECK_PAYABLE,
+  LEGAL_NAME,
+  ORG_EIN,
+  ORG_MAILING_ADDRESS,
+  SITE_NAME,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Donate",
@@ -9,12 +16,10 @@ export const metadata: Metadata = {
     "Support Wylie Christian Care Center. Give by check or in person today — every gift goes directly to serving families in crisis. Online giving coming soon.",
 };
 
-// TODO (Ron, P1-11): real mailing address, check payable name, and EIN.
-const CHECK_PAYABLE = "Wylie Christian Care Center";
 const MAIL_ADDRESS = [
-  "Wylie Christian Care Center",
-  "123 Main St",
-  "Wylie, TX 75098",
+  CHECK_PAYABLE,
+  ORG_MAILING_ADDRESS.poBox,
+  `${ORG_MAILING_ADDRESS.locality}, ${ORG_MAILING_ADDRESS.region} ${ORG_MAILING_ADDRESS.postalCode}`,
 ];
 
 function HeartIcon({ className }: { className?: string }) {
@@ -81,7 +86,6 @@ export default function DonatePage() {
               <h3 className="mb-3 font-serif text-xl font-bold text-navy">
                 Mail a check
               </h3>
-              {/* TODO (Ron): confirm payable name + mailing address. */}
               <p className="mb-4 font-sans text-[15px] leading-[1.7] text-[#666]">
                 Make checks payable to{" "}
                 <span className="font-semibold text-charcoal">
@@ -214,10 +218,9 @@ export default function DonatePage() {
       <section className="bg-[linear-gradient(135deg,#1B3A5C,#0F2840)] px-8 py-16">
         <div className="mx-auto max-w-[760px] text-center">
           <p className="font-sans text-[15px] leading-[1.8] text-white/75">
-            Wylie Christian Care Center is a registered 501(c)(3) nonprofit, and
-            your gift is tax-deductible to the extent allowed by law. A receipt
-            is available for every donation.
-            {/* TODO (Ron): add the real EIN here, e.g. "Our EIN is XX-XXXXXXX." */}
+            {SITE_NAME} is a ministry of the {LEGAL_NAME}, a 501(c)(3) nonprofit
+            (EIN {ORG_EIN}). Your gift is tax-deductible to the extent allowed by
+            law, and a receipt is available for every donation.
           </p>
         </div>
       </section>

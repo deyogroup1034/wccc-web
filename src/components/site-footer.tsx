@@ -1,5 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  MAP_DIRECTIONS_URL,
+  ORG_ADDRESS,
+  ORG_EMAIL,
+  ORG_PHONE_DISPLAY,
+  ORG_PHONE_HREF,
+} from "@/lib/site";
 
 // TODO: point at the deployed PantryFriend staff app login once its URL is known.
 const PANTRYFRIEND_LOGIN_URL = "#";
@@ -26,12 +33,15 @@ const FOOTER_COLUMNS = [
   {
     title: "Contact",
     links: [
-      { label: "(972) 555-0190", href: "tel:+19725550190" },
+      { label: ORG_PHONE_DISPLAY, href: ORG_PHONE_HREF },
       {
-        label: "info@wyliechristiancare.org",
-        href: "mailto:info@wyliechristiancare.org",
+        label: ORG_EMAIL,
+        href: `mailto:${ORG_EMAIL}`,
       },
-      { label: "123 Main St, Wylie, TX", href: "#" },
+      {
+        label: `${ORG_ADDRESS.street}, ${ORG_ADDRESS.locality}, ${ORG_ADDRESS.region}`,
+        href: MAP_DIRECTIONS_URL,
+      },
     ],
   },
 ];

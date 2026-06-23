@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ORG_PHONE_DISPLAY, ORG_PHONE_HREF } from "@/lib/site";
 
 /** Green CTA band: reassurance + Get Help / Call actions. */
 export function CtaBand() {
@@ -23,10 +24,10 @@ export function CtaBand() {
             Get Help
           </Link>
           <a
-            href="tel:+19725550190"
+            href={ORG_PHONE_HREF}
             className="inline-block rounded-lg border border-white/30 bg-white/15 px-8 py-3.5 font-sans text-[15px] font-semibold text-white transition hover:bg-white/25"
           >
-            Call (972) 555-0190
+            Call {ORG_PHONE_DISPLAY}
           </a>
         </div>
       </div>

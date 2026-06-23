@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
+import {
+  BILL_ASSISTANCE_NOTE,
+  MAP_DIRECTIONS_URL,
+  MAP_EMBED_SRC,
+  ORG_ADDRESS,
+  ORG_HOURS,
+  ORG_PHONE_DISPLAY,
+  ORG_PHONE_HREF,
+  SERVICE_AREA,
+  SITE_NAME,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Get Help",
@@ -19,17 +31,19 @@ const ICON = {
   "aria-hidden": true,
 } as const;
 
-// TODO: confirm program details, eligibility, what-to-bring, hours, and phone with WCCC (P1-11).
 const PROGRAMS: {
   title: string;
   desc: string;
+  limit?: string;
   includes: string[];
   icon: ReactNode;
+  image?: { src: string; alt: string };
 }[] = [
   {
     title: "Emergency Bill Assistance",
-    desc: "When an unexpected hardship hits, we can help with essential bills so a tough month doesn't become a crisis.",
-    includes: ["Utility assistance", "Rent help", "Other essential bills"],
+    desc: "Help with rent and utilities when an unexpected hardship hits, so a tough month doesn't become a crisis. Each request is evaluated case-by-case depending on your situation.",
+    limit: "Once per year",
+    includes: ["Rent help", "Utility assistance", "Evaluated case-by-case"],
     icon: (
       <svg {...ICON}>
         <path d="M3 3h18v18H3z" />
@@ -40,12 +54,17 @@ const PROGRAMS: {
   },
   {
     title: "Food Pantry",
-    desc: "Nutritious groceries and pantry staples to help families put food on the table.",
+    desc: "Groceries and pantry staples to help families put food on the table.",
+    limit: "Once a month",
     includes: [
       "Fresh & non-perishable groceries",
       "Pantry staples",
       "Seasonal items",
     ],
+    image: {
+      src: "/food-pantry.jpg",
+      alt: "Volunteers stocking the Wylie Christian Care Center food pantry",
+    },
     icon: (
       <svg {...ICON}>
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
@@ -56,7 +75,8 @@ const PROGRAMS: {
   },
   {
     title: "Clothing & Essentials",
-    desc: "Gently used clothing and household essentials, available at no cost to those in need.",
+    desc: "Gently used clothing and household essentials at no cost to those in need.",
+    limit: "Once a quarter",
     includes: [
       "Clothing for all ages",
       "Shoes & seasonal wear",
@@ -89,25 +109,14 @@ const PROGRAMS: {
 
 const QUALIFIES = [
   "You live in one of our seven service-area communities",
-  "Your household is facing financial hardship",
-  "Everyone is welcome — we serve with no judgment",
+  "You're facing a need — every situation is evaluated case-by-case",
+  "There's no fixed income cutoff — everyone is welcome, with no judgment",
 ];
 
 const BRING = [
-  "Photo ID for every adult in the household",
-  "Proof of address (utility bill, lease, or mail)",
-  "For bill assistance: a copy of the bill or notice",
-  "Names & ages of children in the home",
-];
-
-const SERVICE_AREA = [
-  "Wylie",
-  "Lavon",
-  "Nevada",
-  "Josephine",
-  "Copeville",
-  "Sachse",
-  "Murphy",
+  "A photo ID",
+  "For bill assistance: a copy of the bill",
+  "Or a copy of your lease",
 ];
 
 function CheckList({ items }: { items: string[] }) {
@@ -161,12 +170,11 @@ export default function GetHelpPage() {
             </div>
             <p className="mt-2 font-sans text-[15px] leading-[1.7] text-[#666]">
               For bill assistance or to plan your visit, call us at{" "}
-              {/* TODO: real phone number */}
               <a
-                href="tel:+19725550190"
+                href={ORG_PHONE_HREF}
                 className="font-semibold text-evergreen hover:underline"
               >
-                (972) 555-0190
+                {ORG_PHONE_DISPLAY}
               </a>
               .
             </p>
@@ -190,17 +198,36 @@ export default function GetHelpPage() {
             {PROGRAMS.map((program) => (
               <div
                 key={program.title}
-                className="flex h-full flex-col rounded-2xl border border-[#E8E4DE] bg-white p-8"
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E8E4DE] bg-white"
               >
-                <div className="mb-5 flex size-14 items-center justify-center rounded-xl bg-evergreen/[0.07] text-evergreen">
-                  {program.icon}
-                </div>
-                <h3 className="mb-2.5 font-serif text-[22px] font-bold text-navy">
-                  {program.title}
-                </h3>
-                <p className="mb-6 font-sans text-[15px] leading-[1.7] text-[#666]">
-                  {program.desc}
-                </p>
+                {program.image ? (
+                  <div className="relative aspect-[16/9] w-full">
+                    <Image
+                      src={program.image.src}
+                      alt={program.image.alt}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : null}
+                <div className="flex flex-1 flex-col p-8">
+                  <div className="mb-5 flex size-14 items-center justify-center rounded-xl bg-evergreen/[0.07] text-evergreen">
+                    {program.icon}
+                  </div>
+                  <div className="mb-2.5 flex flex-wrap items-center gap-3">
+                    <h3 className="font-serif text-[22px] font-bold text-navy">
+                      {program.title}
+                    </h3>
+                    {program.limit ? (
+                      <span className="rounded-full bg-gold/15 px-3 py-1 font-sans text-[12px] font-bold tracking-[0.02em] text-gold-ink">
+                        {program.limit}
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="mb-6 font-sans text-[15px] leading-[1.7] text-[#666]">
+                    {program.desc}
+                  </p>
                 <div className="mt-auto border-t border-[#E8E4DE] pt-5">
                   <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.15em] text-evergreen uppercase">
                     Includes
@@ -215,6 +242,7 @@ export default function GetHelpPage() {
                       </li>
                     ))}
                   </ul>
+                  </div>
                 </div>
               </div>
             ))}
@@ -265,19 +293,19 @@ export default function GetHelpPage() {
                 <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
                   Address
                 </div>
-                {/* TODO: real street address from Audrey (P1-11). */}
                 <address className="font-sans not-italic">
                   <div className="font-serif text-xl font-bold text-navy">
-                    Wylie Christian Care Center
+                    {SITE_NAME}
                   </div>
                   <div className="mt-2 text-[15px] leading-[1.7] text-charcoal">
-                    123 Main St
+                    {ORG_ADDRESS.street}
                     <br />
-                    Wylie, TX 75098
+                    {ORG_ADDRESS.locality}, {ORG_ADDRESS.region}{" "}
+                    {ORG_ADDRESS.postalCode}
                   </div>
                 </address>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Wylie+Christian+Care+Center+Wylie+TX"
+                  href={MAP_DIRECTIONS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-block font-sans text-sm font-bold text-evergreen transition-all hover:underline"
@@ -290,13 +318,8 @@ export default function GetHelpPage() {
                 <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
                   Hours
                 </div>
-                {/* TODO: real open hours from WCCC */}
                 <dl className="space-y-3">
-                  {[
-                    ["Monday – Thursday", "9:00 am – 12:00 pm"],
-                    ["Friday", "By appointment"],
-                    ["Saturday – Sunday", "Closed"],
-                  ].map(([day, time]) => (
+                  {ORG_HOURS.map(({ day, time }) => (
                     <div
                       key={day}
                       className="flex items-center justify-between border-b border-[#E8E4DE] pb-3 last:border-0"
@@ -310,19 +333,21 @@ export default function GetHelpPage() {
                     </div>
                   ))}
                 </dl>
-                <p className="mt-5 font-sans text-[13px] text-[#666] italic">
+                <p className="mt-5 font-sans text-[13px] leading-[1.6] text-charcoal">
+                  {BILL_ASSISTANCE_NOTE}
+                </p>
+                <p className="mt-2 font-sans text-[13px] text-[#666] italic">
                   Hours are subject to change on holidays — call ahead if
                   you&apos;re unsure.
                 </p>
               </div>
             </div>
 
-            {/* Map */}
-            {/* TODO: update the embed query to Audrey's confirmed street address. */}
+            {/* Map pinned to our visit address. */}
             <div className="min-h-[360px] overflow-hidden rounded-2xl border border-[#E8E4DE] bg-white">
               <iframe
-                title="Map showing the Wylie, Texas area"
-                src="https://maps.google.com/maps?q=Wylie%2C%20TX&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                title={`Map showing ${SITE_NAME} at ${ORG_ADDRESS.street}, ${ORG_ADDRESS.locality}, ${ORG_ADDRESS.region}`}
+                src={MAP_EMBED_SRC}
                 className="size-full min-h-[360px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -372,10 +397,10 @@ export default function GetHelpPage() {
             </p>
           </div>
           <a
-            href="tel:+19725550190"
+            href={ORG_PHONE_HREF}
             className="inline-block shrink-0 rounded-lg bg-white px-8 py-3.5 font-sans text-[15px] font-bold text-evergreen transition hover:-translate-y-0.5"
           >
-            Call (972) 555-0190
+            Call {ORG_PHONE_DISPLAY}
           </a>
         </div>
       </section>

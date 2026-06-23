@@ -8,6 +8,7 @@ import { GetInvolvedPreview } from "@/components/get-involved-preview";
 import { Testimonial } from "@/components/testimonial";
 import {
   absoluteUrl,
+  LEGAL_NAME,
   ORG_ADDRESS,
   ORG_EMAIL,
   ORG_PHONE,
@@ -26,6 +27,7 @@ const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "NGO",
   name: SITE_NAME,
+  legalName: LEGAL_NAME,
   alternateName: "WCCC",
   url: SITE_URL,
   logo: absoluteUrl("/brand/wccc-logo-full.png"),

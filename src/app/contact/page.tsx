@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
 import { ContactForm } from "@/components/contact-form";
+import {
+  BILL_ASSISTANCE_NOTE,
+  MAP_EMBED_SRC,
+  ORG_ADDRESS,
+  ORG_EMAIL,
+  ORG_HOURS,
+  ORG_PHONE_DISPLAY,
+  ORG_PHONE_HREF,
+  SITE_NAME,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -9,19 +19,13 @@ export const metadata: Metadata = {
     "Get in touch with Wylie Christian Care Center. Call, email, or send us a message. For urgent help, calling is fastest.",
 };
 
-// TODO (P1-11): real phone, email, and address from Audrey + Ron.
-const PHONE_DISPLAY = "(972) 555-0190";
-const PHONE_HREF = "tel:+19725550190";
-const EMAIL = "info@wyliechristiancare.org";
+const PHONE_DISPLAY = ORG_PHONE_DISPLAY;
+const PHONE_HREF = ORG_PHONE_HREF;
+const EMAIL = ORG_EMAIL;
 const ADDRESS = [
-  "Wylie Christian Care Center",
-  "123 Main St",
-  "Wylie, TX 75098",
-];
-const HOURS = [
-  ["Monday – Thursday", "9:00 am – 12:00 pm"],
-  ["Friday", "By appointment"],
-  ["Saturday – Sunday", "Closed"],
+  SITE_NAME,
+  ORG_ADDRESS.street,
+  `${ORG_ADDRESS.locality}, ${ORG_ADDRESS.region} ${ORG_ADDRESS.postalCode}`,
 ];
 
 export default function ContactPage() {
@@ -110,7 +114,7 @@ export default function ContactPage() {
                   Hours
                 </dt>
                 <dd className="mt-2 space-y-1.5">
-                  {HOURS.map(([day, time]) => (
+                  {ORG_HOURS.map(({ day, time }) => (
                     <div
                       key={day}
                       className="flex max-w-[320px] items-center justify-between"
@@ -123,15 +127,18 @@ export default function ContactPage() {
                       </span>
                     </div>
                   ))}
+                  <p className="max-w-[320px] pt-1 font-sans text-[13px] leading-[1.6] text-[#666] italic">
+                    {BILL_ASSISTANCE_NOTE}
+                  </p>
                 </dd>
               </div>
             </dl>
 
-            {/* Map — TODO: update query to the confirmed street address (P1-11). */}
+            {/* Map pinned to our visit address. */}
             <div className="mt-8 min-h-[280px] overflow-hidden rounded-2xl border border-[#E8E4DE]">
               <iframe
-                title="Map showing the Wylie, Texas area"
-                src="https://maps.google.com/maps?q=Wylie%2C%20TX&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                title={`Map showing ${SITE_NAME} at ${ORG_ADDRESS.street}, ${ORG_ADDRESS.locality}, ${ORG_ADDRESS.region}`}
+                src={MAP_EMBED_SRC}
                 className="size-full min-h-[280px]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
