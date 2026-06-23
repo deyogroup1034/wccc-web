@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 /** Mission statement with a "Learn Our Story" link to /about. */
@@ -32,14 +33,14 @@ export function MissionSection() {
           </Link>
         </div>
 
-        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-[#E8E4DE] bg-[linear-gradient(135deg,rgba(27,58,92,0.08),rgba(46,125,79,0.08))]">
-          <div className="px-10 text-center">
-            <div className="mb-3 text-[56px] opacity-60">📸</div>
-            <div className="mx-auto max-w-[240px] font-sans text-[13px] text-[#666] italic">
-              Community photography: volunteers, pantry operations, or a family
-              being served
-            </div>
-          </div>
+        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[#E8E4DE]">
+          <Image
+            src="/food-pantry.jpg"
+            alt="Volunteers stocking the Wylie Christian Care Center food pantry"
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover object-center"
+          />
           <div className="absolute right-0 bottom-0 size-[120px] rounded-tl-[80px] bg-gold opacity-15" />
         </div>
       </div>
