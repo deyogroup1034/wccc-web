@@ -64,7 +64,7 @@ export function SiteNav() {
           <Link
             href="/"
             aria-label="Wylie Christian Care Center — home"
-            className="flex items-center gap-3 md:gap-4"
+            className="flex min-w-0 items-center gap-3 md:gap-4"
           >
             <Image
               src="/brand/wccc-logo-mark.svg"
@@ -72,17 +72,19 @@ export function SiteNav() {
               width={100}
               height={100}
               priority
-              className="h-14 w-auto shrink-0 md:h-[7.5rem]"
+              className="h-12 w-auto shrink-0 md:h-16"
             />
-            {/* Smaller wordmark on mobile, full size at md+. */}
-            <span className="font-serif text-[17px] leading-[1.1] font-bold tracking-[0.01em] text-white md:text-[2em]">
+            {/* Smaller wordmark on mobile, slightly larger at md+. Fixed px sizes
+                (not em) so the lockup renders identically across browsers, and
+                whitespace-nowrap keeps each line from wrapping. */}
+            <span className="font-serif text-[17px] leading-[1.1] font-bold tracking-[0.01em] whitespace-nowrap text-white md:text-[22px]">
               <span className="block">Wylie Christian</span>
               <span className="block">Care Center</span>
             </span>
           </Link>
 
-          <nav className="flex items-center gap-4 md:gap-7">
-            <div className="hidden items-center gap-7 md:flex">
+          <nav className="flex shrink-0 items-center gap-4 md:gap-7">
+            <div className="hidden items-center gap-7 whitespace-nowrap md:flex">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
