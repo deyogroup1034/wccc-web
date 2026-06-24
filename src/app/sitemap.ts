@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site";
 import { getPublishedPosts } from "@/lib/news";
+import { getPublishedEvents } from "@/lib/events";
 
 export const dynamic = "force-static";
 
@@ -12,6 +13,7 @@ const STATIC_ROUTES = [
   "/donate",
   "/contact",
   "/news",
+  "/events",
   "/privacy",
 ];
 
@@ -31,5 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticEntries, ...postEntries];
+  const eventEntries: MetadataRoute.Sitemap = getPublishedEvents().map(
+    (event) => ({
+      url: absoluteUrl(`/events/${event.slug}`),
+      lastModified: new Date(event.frontmatter.date),
+      changeFrequency: "yearly",
+      priority: 0.5,
+    }),
+  );
+
+  return [...staticEntries, ...postEntries, ...eventEntries];
 }

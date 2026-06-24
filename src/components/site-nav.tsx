@@ -20,6 +20,7 @@ const NAV_LINKS = [
   { label: "Get Help", href: "/get-help" },
   { label: "Get Involved", href: "/get-involved" },
   { label: "News", href: "/news" },
+  { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -83,8 +84,9 @@ export function SiteNav() {
             </span>
           </Link>
 
-          <nav className="flex shrink-0 items-center gap-4 md:gap-7">
-            <div className="hidden items-center gap-7 whitespace-nowrap md:flex">
+          <nav className="flex shrink-0 items-center gap-4 md:gap-5 lg:gap-7">
+            {/* Tighter link spacing at md (6 links can crowd 768–900px), roomy at lg+. */}
+            <div className="hidden items-center gap-5 whitespace-nowrap md:flex lg:gap-7">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}

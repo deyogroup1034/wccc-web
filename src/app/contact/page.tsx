@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/page-header";
 import { ContactForm } from "@/components/contact-form";
 import {
   BILL_ASSISTANCE_NOTE,
+  CALL_NOTE,
   MAP_EMBED_SRC,
   ORG_ADDRESS,
   ORG_EMAIL,
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: "Contact",
   alternates: { canonical: "/contact" },
   description:
-    "Get in touch with Wylie Christian Care Center. Call, email, or send us a message. For urgent help, calling is fastest.",
+    "Get in touch with Wylie Christian Care Center. Call or visit during our open hours, or send us a message.",
 };
 
 const PHONE_DISPLAY = ORG_PHONE_DISPLAY;
@@ -34,17 +35,17 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="We'd love to hear from you"
-        intro="Whether you need help, want to volunteer, or just have a question — reach out. We're here, and a real person will get back to you."
+        intro="Whether you need help, want to volunteer, or just have a question — reach out. We read every message, though the surest way to get help is to visit or call during our open hours."
       />
 
-      {/* ── Urgent help note ── */}
+      {/* ── Help note ── */}
       <section className="bg-warm-white px-8 pt-12">
         <div className="mx-auto max-w-[1200px]">
           <div className="flex flex-col items-start gap-3 rounded-2xl border border-gold/30 bg-gold/[0.08] px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-sans text-[15px] leading-[1.6] text-charcoal">
-              <span className="font-bold text-navy">Need help right now?</span>{" "}
-              Calling is the fastest way to reach us — please don&apos;t wait on
-              a form or email.
+              <span className="font-bold text-navy">Need help?</span> The surest
+              way to get help is to call or visit during our open hours, when a
+              real person can answer.
             </p>
             <a
               href={PHONE_HREF}
@@ -53,6 +54,23 @@ export default function ContactPage() {
               Call {PHONE_DISPLAY}
             </a>
           </div>
+          <p className="mt-3 font-sans text-[13px] leading-[1.6] text-[#666]">
+            {CALL_NOTE} Outside our open hours? For urgent needs, dial{" "}
+            <a
+              href="tel:211"
+              className="font-semibold text-evergreen hover:underline"
+            >
+              2-1-1
+            </a>{" "}
+            for Texas health &amp; human services referrals, or{" "}
+            <a
+              href="tel:911"
+              className="font-semibold text-evergreen hover:underline"
+            >
+              911
+            </a>{" "}
+            in an emergency.
+          </p>
         </div>
       </section>
 

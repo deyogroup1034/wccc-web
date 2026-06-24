@@ -10,7 +10,7 @@ export type ContactResult = { ok: true } | { ok: false; error: string };
 // RESEND_API_KEY + a verified domain (separate setup) before mail flows.
 const CONTACT_TO = process.env.CONTACT_TO_EMAIL ?? ORG_EMAIL;
 
-const GENERIC_ERROR = `Sorry — we couldn't send your message right now. Please call us at ${ORG_PHONE_DISPLAY} or try again later.`;
+const GENERIC_ERROR = `Sorry — we couldn't send your message right now. Please call us at ${ORG_PHONE_DISPLAY} during our open hours, or try again later.`;
 
 export async function sendContactMessage(
   input: unknown,

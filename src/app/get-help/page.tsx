@@ -4,6 +4,7 @@ import Image from "next/image";
 import { PageHeader } from "@/components/page-header";
 import {
   BILL_ASSISTANCE_NOTE,
+  CALL_NOTE,
   MAP_DIRECTIONS_URL,
   MAP_EMBED_SRC,
   ORG_ADDRESS,
@@ -149,7 +150,7 @@ export default function GetHelpPage() {
       <PageHeader
         eyebrow="Get Help"
         title="Help is here — you're not alone"
-        intro="Walk in during pantry hours or call to schedule an appointment. There's no judgment here, just real help and people who care."
+        intro="Walk in during our open hours — no appointment needed. There's no judgment here, just real help and people who care."
       />
 
       {/* ── How to get help (reassurance) ── */}
@@ -157,26 +158,26 @@ export default function GetHelpPage() {
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-2xl border border-[#E8E4DE] bg-white p-8">
             <div className="font-serif text-xl font-bold text-navy">
-              Walk in during pantry hours
+              Walk in during our open hours
             </div>
             <p className="mt-2 font-sans text-[15px] leading-[1.7] text-[#666]">
-              Come by during our open hours — no appointment needed for the food
-              pantry and clothing.
+              Come by during our open hours for the food pantry, clothing, and
+              bill assistance — no appointment needed.
             </p>
           </div>
           <div className="rounded-2xl border border-[#E8E4DE] bg-white p-8">
             <div className="font-serif text-xl font-bold text-navy">
-              Call to schedule
+              Have a question? Call us
             </div>
             <p className="mt-2 font-sans text-[15px] leading-[1.7] text-[#666]">
-              For bill assistance or to plan your visit, call us at{" "}
+              Reach us at{" "}
               <a
                 href={ORG_PHONE_HREF}
                 className="font-semibold text-evergreen hover:underline"
               >
                 {ORG_PHONE_DISPLAY}
               </a>
-              .
+              . {CALL_NOTE}
             </p>
           </div>
         </div>
@@ -337,8 +338,8 @@ export default function GetHelpPage() {
                   {BILL_ASSISTANCE_NOTE}
                 </p>
                 <p className="mt-2 font-sans text-[13px] text-[#666] italic">
-                  Hours are subject to change on holidays — call ahead if
-                  you&apos;re unsure.
+                  Hours may change around holidays — please check here before
+                  you visit.
                 </p>
               </div>
             </div>
@@ -368,8 +369,8 @@ export default function GetHelpPage() {
           </h2>
           <p className="mb-8 max-w-[520px] font-sans text-base leading-[1.8] text-charcoal">
             We serve families who live in and around these communities in the
-            Wylie, Texas area. Not sure if you&apos;re in our area? Give us a
-            call and we&apos;ll help.
+            Wylie, Texas area. Not sure if you&apos;re in our area? Call or stop
+            by during our open hours and we&apos;ll help.
           </p>
           <ul className="flex flex-wrap gap-3">
             {SERVICE_AREA.map((city) => (
@@ -393,7 +394,7 @@ export default function GetHelpPage() {
               Ready when you are
             </h2>
             <p className="font-sans text-base text-white/80">
-              Walk in during pantry hours, or call to schedule an appointment.
+              Walk in during our open hours — no appointment needed.
             </p>
           </div>
           <a

@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Daily rebuild so statically-generated "upcoming events" auto-expire: the
+  # build recomputes the Central-time cutoff (see src/lib/events.ts) and drops
+  # past events within ~24h — no manual upkeep. ~6am Central (cron is UTC).
+  schedule:
+    - cron: "0 11 * * *"
 
 concurrency:
   group: deploy-${{ github.ref }}

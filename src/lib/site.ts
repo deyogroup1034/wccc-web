@@ -58,6 +58,12 @@ export const ORG_HOURS: { day: string; time: string }[] = [
 export const BILL_ASSISTANCE_NOTE =
   "Emergency Bill Assistance is available Monday & Wednesday only.";
 
+// Tactful expectation-setting for phone contact (we're a small walk-in team).
+// Everything is walk-in — there are no appointments — so we avoid implying a
+// callback and point people to our open hours instead.
+export const CALL_NOTE =
+  "We're a small team, so the surest way to get help is to visit or call during our open hours. Messages left after hours may not be returned right away.";
+
 // Google Maps embed + directions, pinned to the visit address.
 export const MAP_EMBED_SRC =
   "https://maps.google.com/maps?q=1310%20W.%20Brown%20St%2C%20Wylie%2C%20TX%2075098&t=&z=15&ie=UTF8&iwloc=&output=embed";

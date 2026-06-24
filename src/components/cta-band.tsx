@@ -12,8 +12,8 @@ export function CtaBand() {
             Need help? You&apos;re not alone.
           </h2>
           <p className="font-sans text-base text-white/80">
-            Walk in during pantry hours or call to schedule an appointment. No
-            judgment, just help.
+            Walk in during our open hours — no appointment needed. No judgment,
+            just help.
           </p>
         </div>
         <div className="flex shrink-0 flex-wrap justify-center gap-4">
