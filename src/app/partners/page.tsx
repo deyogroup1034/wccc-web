@@ -59,13 +59,13 @@ const PARTNER_GROUPS: PartnerGroup[] = [
 function PartnerCard({ partner }: { partner: Partner }) {
   const inner = (
     <>
-      <div className="flex aspect-[3/2] items-center justify-center rounded-xl border border-[#E8E4DE] bg-white p-6">
+      <div className="flex aspect-square items-center justify-center rounded-xl border border-[#E8E4DE] bg-white p-4">
         {partner.logo ? (
           <Image
             src={partner.logo}
             alt={`${partner.name} logo`}
-            width={320}
-            height={200}
+            width={480}
+            height={480}
             className="max-h-full max-w-full object-contain"
           />
         ) : (
