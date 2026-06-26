@@ -27,6 +27,7 @@ const FOOTER_COLUMNS = [
       { label: "Volunteer", href: "/get-involved" },
       { label: "Donate", href: "/donate" },
       { label: "Partner With Us", href: "/get-involved" },
+      { label: "Our Partners", href: "/partners" },
       { label: "Church Drives", href: "/get-involved" },
     ],
   },

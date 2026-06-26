@@ -171,7 +171,15 @@ export default function GetInvolvedPage() {
               </div>
             ))}
           </div>
-          <ContactCta label="Become a partner" />
+          <div className="flex flex-wrap items-center gap-6">
+            <ContactCta label="Become a partner" />
+            <Link
+              href="/partners"
+              className="font-sans text-[15px] font-semibold text-evergreen underline-offset-4 hover:underline"
+            >
+              See our partners →
+            </Link>
+          </div>
         </div>
       </section>
 
