@@ -35,8 +35,7 @@ const PARTNER_GROUPS: PartnerGroup[] = [
     partners: [
       {
         name: "North Texas Food Bank",
-        // TODO: add public/partners/north-texas-food-bank.png and uncomment.
-        // logo: "/partners/north-texas-food-bank.png",
+        logo: "/partners/north-texas-food-bank.png",
         url: "https://ntfb.org",
       },
     ],
