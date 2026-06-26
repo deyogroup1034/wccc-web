@@ -171,11 +171,11 @@ export default function GetInvolvedPage() {
               </div>
             ))}
           </div>
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4">
             <ContactCta label="Become a partner" />
             <Link
               href="/partners"
-              className="font-sans text-[15px] font-semibold text-evergreen underline-offset-4 hover:underline"
+              className="inline-block rounded-lg border-2 border-navy bg-white px-7 py-3 font-sans text-[15px] font-bold text-navy transition hover:-translate-y-0.5 hover:bg-navy hover:text-white"
             >
               See our partners →
             </Link>
