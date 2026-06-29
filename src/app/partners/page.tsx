@@ -18,42 +18,13 @@ type Partner = {
   url?: string;
 };
 
-type PartnerGroup = {
-  key: string;
-  title: string;
-  blurb?: string;
-  partners: Partner[];
-};
-
 // Logo files live in public/partners/. Add one and set `logo` to its filename.
-const PARTNER_GROUPS: PartnerGroup[] = [
+const FOOD_SOURCING_PARTNERS: Partner[] = [
   {
-    key: "food-sourcing",
-    title: "Food Sourcing",
-    blurb:
-      "Where our pantry shelves come from. These partners help us source food at scale so we can meet the need every week.",
-    partners: [
-      {
-        name: "North Texas Food Bank",
-        logo: "/partners/north-texas-food-bank.png",
-        url: "https://ntfb.org",
-      },
-    ],
+    name: "North Texas Food Bank",
+    logo: "/partners/north-texas-food-bank.png",
+    url: "https://ntfb.org",
   },
-  {
-    key: "coffee-with-a-cause",
-    title: "Coffee with a Cause",
-    blurb:
-      "Local coffee partners pouring proceeds back into the families we serve. Read the story on our news page.",
-    partners: [
-      // TODO: Replace these placeholder slots with the real coffee partners
-      // once confirmed. Add the logo file to public/partners/ and set `logo`.
-      { name: "Coffee partner — TBA" },
-      { name: "Coffee partner — TBA" },
-      { name: "Coffee partner — TBA" },
-    ],
-  },
-  // TODO: Add "Churches" and "Businesses" groups as those partnerships are formalized.
 ];
 
 function PartnerCard({ partner }: { partner: Partner }) {
@@ -104,33 +75,79 @@ export default function PartnersPage() {
         intro="WCCC's work is made possible through partnership — with churches, businesses, food sources, and neighbors who keep our shelves stocked and our doors open. Here are some of the partners walking with us."
       />
 
-      {PARTNER_GROUPS.map((group, idx) => (
-        <section
-          key={group.key}
-          className={`px-8 py-20 ${idx % 2 === 0 ? "bg-warm-white" : "border-t border-[#E8E4DE] bg-white"}`}
-        >
-          <div className="mx-auto max-w-[1200px]">
-            <div className="mb-10 max-w-[680px]">
-              <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
-                {group.title}
-              </div>
-              <h2 className="mb-4 font-serif text-[28px] leading-[1.3] font-bold text-navy">
-                {group.title}
-              </h2>
-              {group.blurb && (
-                <p className="font-sans text-base leading-[1.8] text-charcoal">
-                  {group.blurb}
-                </p>
-              )}
+      {/* ── Food Sourcing ── */}
+      <section className="bg-warm-white px-8 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-10 max-w-[680px]">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
+              Food Sourcing
             </div>
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-              {group.partners.map((partner, i) => (
-                <PartnerCard key={`${group.key}-${i}`} partner={partner} />
-              ))}
+            <h2 className="mb-4 font-serif text-[28px] leading-[1.3] font-bold text-navy">
+              Food Sourcing
+            </h2>
+            <p className="font-sans text-base leading-[1.8] text-charcoal">
+              Where our pantry shelves come from. These partners help us source
+              food at scale so we can meet the need every week.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+            {FOOD_SOURCING_PARTNERS.map((partner) => (
+              <PartnerCard key={partner.name} partner={partner} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Coffee with a Cause ──
+          No coffee-partner logos yet — partners are still being recruited. As
+          businesses come on board, render them in a logo grid here (mirror the
+          Food Sourcing section above with a FOOD_SOURCING_PARTNERS-style array
+          and a <PartnerCard /> grid). */}
+      <section className="border-t border-[#E8E4DE] bg-white px-8 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="mb-10 max-w-[680px]">
+            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
+              Coffee with a Cause
+            </div>
+            <h2 className="mb-4 font-serif text-[28px] leading-[1.3] font-bold text-navy">
+              Coffee with a Cause
+            </h2>
+            <p className="font-sans text-base leading-[1.8] text-charcoal">
+              Coffee with a Cause is our partnership with Wylie ISD&apos;s
+              Adulting Well program, where special-needs students build real job
+              skills by crafting high-quality coffee — from grinding to packing.
+              Every purchase supports their future and the work of the Care
+              Center.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[#E8E4DE] bg-cream p-8 md:p-10">
+            <div className="grid grid-cols-1 gap-7 md:grid-cols-[1.4fr_1fr] md:items-center">
+              <div>
+                <h3 className="mb-3 font-serif text-2xl font-bold text-navy">
+                  Become a Coffee Partner
+                </h3>
+                <p className="font-sans text-[15px] leading-[1.7] text-charcoal">
+                  For $1,000/year, your business receives monthly coffee to
+                  enjoy or share, plus advertising at our locations, events, and
+                  on social media.
+                </p>
+              </div>
+              <div className="md:text-right">
+                <Link
+                  href="/contact"
+                  className="inline-block rounded-lg bg-evergreen px-7 py-3.5 font-sans text-[15px] font-bold text-white transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(46,125,79,0.3)]"
+                >
+                  Become a partner
+                </Link>
+              </div>
             </div>
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
+
+      {/* TODO: future groups — Churches, Businesses — render as additional
+          <section>s above the bottom CTA. */}
 
       {/* ── Become a partner CTA ── */}
       <section className="relative overflow-hidden bg-[linear-gradient(135deg,#1B3A5C,#0F2840)] px-8 py-16">
