@@ -27,6 +27,64 @@ const FOOD_SOURCING_PARTNERS: Partner[] = [
   },
 ];
 
+const COFFEE_PARTNERS: Partner[] = [
+  {
+    name: "American National Bank",
+    logo: "/partners/american-national-bank.png",
+    url: "https://www.anbtx.com",
+  },
+  {
+    name: "Bickerstaff Insurance",
+    logo: "/partners/bickerstaff-insurance.jpg",
+    url: "https://bickerstaffins.com",
+  },
+  {
+    name: "Creekwood United Methodist Church",
+    logo: "/partners/creekwood-umc.jpg",
+    url: "https://creekwoodumc.org",
+  },
+  {
+    name: "H-E-B",
+    logo: "/partners/heb.jpg",
+    url: "https://www.heb.com",
+  },
+  {
+    name: "JAL Dennis Group",
+    logo: "/partners/jal-dennis-group.jpg",
+    url: "https://www.jaldennis.com",
+  },
+  {
+    name: "Lutz Woodworks",
+    logo: "/partners/lutz-woodworks.jpg",
+    url: "https://lutzwoodworks.com",
+  },
+  {
+    name: "Massage Bliss & Cryo",
+    logo: "/partners/massage-bliss-cryo.png",
+    url: "https://massageblissandcryo.com",
+  },
+  {
+    name: "Wylie Carpet & Tile",
+    logo: "/partners/wylie-carpet-tile.jpg",
+    url: "https://www.wyliecarpetandtile.com",
+  },
+  {
+    name: "Wylie Flower & Gift",
+    logo: "/partners/wylie-flower-gift.jpg",
+    url: "https://www.wylieflowershop.com",
+  },
+  {
+    name: "Wylie Printing & Office Supply",
+    logo: "/partners/wylie-printing-office-supply.png",
+    url: "https://www.wylieprinting.com",
+  },
+  {
+    name: "Wylie United Methodist Church",
+    logo: "/partners/wylie-umc.jpg",
+    url: "https://www.wylieumc.org",
+  },
+];
+
 function PartnerCard({ partner }: { partner: Partner }) {
   const inner = (
     <>
@@ -98,11 +156,7 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ── Coffee with a Cause ──
-          No coffee-partner logos yet — partners are still being recruited. As
-          businesses come on board, render them in a logo grid here (mirror the
-          Food Sourcing section above with a FOOD_SOURCING_PARTNERS-style array
-          and a <PartnerCard /> grid). */}
+      {/* ── Coffee with a Cause ── */}
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-20">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-10 max-w-[680px]">
@@ -119,6 +173,17 @@ export default function PartnersPage() {
               Every purchase supports their future and the work of the Care
               Center.
             </p>
+          </div>
+
+          <div className="mb-12">
+            <h3 className="mb-6 font-serif text-[22px] leading-[1.3] font-bold text-navy">
+              Our Coffee Partners
+            </h3>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+              {COFFEE_PARTNERS.map((partner) => (
+                <PartnerCard key={partner.name} partner={partner} />
+              ))}
+            </div>
           </div>
 
           <div className="rounded-2xl border border-[#E8E4DE] bg-cream p-8 md:p-10">
