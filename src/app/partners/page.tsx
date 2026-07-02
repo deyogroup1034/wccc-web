@@ -180,7 +180,7 @@ export default function PartnersPage() {
                 the Care Center.
               </p>
             </div>
-            <figure className="mx-auto max-w-[420px] md:mx-0 md:ml-auto">
+            <figure className="mx-auto max-w-[300px] md:mx-0 md:ml-auto">
               <Image
                 src="/coffee-that-cares-sign.jpg"
                 alt="Coffee that Cares sign"
