@@ -163,7 +163,7 @@ export default function PartnersPage() {
 
       {/* ── Coffee with a Cause ── */}
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-20">
-        <div className="mx-auto max-w-[1200px]">
+        <div className="mx-auto max-w-[1320px]">
           <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
             <div className="max-w-[680px]">
               <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
@@ -180,13 +180,13 @@ export default function PartnersPage() {
                 the Care Center.
               </p>
             </div>
-            <figure className="mx-auto max-w-[300px] md:mx-0 md:ml-auto">
+            <figure className="mx-auto max-w-[300px] md:mx-0 md:max-w-none">
               <Image
                 src="/coffee-that-cares-sign.jpg"
                 alt="Coffee that Cares sign"
                 width={840}
                 height={840}
-                className="w-full rounded-2xl border border-[#E8E4DE] object-contain"
+                className="w-full max-w-[300px] rounded-2xl border border-[#E8E4DE] object-contain md:mx-auto"
               />
               <figcaption className="mt-3 font-sans text-sm leading-[1.7] text-charcoal/70">
                 Look for this sign in the lobby of Smith Public Library. The
