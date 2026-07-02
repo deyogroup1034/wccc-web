@@ -64,6 +64,11 @@ const COFFEE_PARTNERS: Partner[] = [
     url: "https://massageblissandcryo.com",
   },
   {
+    name: "Smith Public Library",
+    logo: "/partners/smith-public-library.png",
+    url: "https://www.wylietexas.gov/library.php",
+  },
+  {
     name: "Wylie Carpet & Tile",
     logo: "/partners/wylie-carpet-tile.jpg",
     url: "https://www.wyliecarpetandtile.com",
@@ -159,20 +164,37 @@ export default function PartnersPage() {
       {/* ── Coffee with a Cause ── */}
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-20">
         <div className="mx-auto max-w-[1200px]">
-          <div className="mb-10 max-w-[680px]">
-            <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
-              Coffee with a Cause
+          <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
+            <div className="max-w-[680px]">
+              <div className="mb-3 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
+                Coffee with a Cause
+              </div>
+              <h2 className="mb-4 font-serif text-[28px] leading-[1.3] font-bold text-navy">
+                Coffee with a Cause
+              </h2>
+              <p className="font-sans text-base leading-[1.8] text-charcoal">
+                Coffee with a Cause is our partnership with Wylie ISD&apos;s
+                Adulting Well program, where special-needs students build real
+                job skills by crafting high-quality coffee — from grinding to
+                packing. Every purchase supports their future and the work of
+                the Care Center.
+              </p>
             </div>
-            <h2 className="mb-4 font-serif text-[28px] leading-[1.3] font-bold text-navy">
-              Coffee with a Cause
-            </h2>
-            <p className="font-sans text-base leading-[1.8] text-charcoal">
-              Coffee with a Cause is our partnership with Wylie ISD&apos;s
-              Adulting Well program, where special-needs students build real job
-              skills by crafting high-quality coffee — from grinding to packing.
-              Every purchase supports their future and the work of the Care
-              Center.
-            </p>
+            <figure className="mx-auto max-w-[420px] md:mx-0 md:ml-auto">
+              <Image
+                src="/coffee-that-cares-sign.jpg"
+                alt="Coffee that Cares sign"
+                width={840}
+                height={840}
+                className="w-full rounded-2xl border border-[#E8E4DE] object-contain"
+              />
+              <figcaption className="mt-3 font-sans text-sm leading-[1.7] text-charcoal/70">
+                Look for this sign in the lobby of Smith Public Library. The
+                Coffee with a Cause cart is there every Tuesday and Wednesday,
+                9–11am — the coffee is free, and donations are welcomed to
+                support the students and the Care Center.
+              </figcaption>
+            </figure>
           </div>
 
           <div className="mb-12">
