@@ -1,7 +1,8 @@
 // Canonical origin. Set NEXT_PUBLIC_SITE_URL at build to flip from the temp
 // *.workers.dev domain to the real domain (P1-12) without touching code.
+// `||` (not `??`) so a blank value in the env file falls back too.
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://wccc-web.deyogroup.workers.dev"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://wccc-web.deyogroup.workers.dev"
 ).replace(/\/$/, "");
 
 // While on the temp domain we don't want it indexed. Flip
