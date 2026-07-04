@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lora, Open_Sans } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteNav } from "@/components/site-nav";
@@ -24,6 +25,11 @@ const openSans = Open_Sans({
   subsets: ["latin"],
   display: "swap",
 });
+
+// Cloudflare Web Analytics (cookieless). The beacon only renders once the
+// site token from the CF dashboard is provided at build time — until then
+// the privacy policy's "no analytics" statement stays accurate.
+const CF_BEACON_TOKEN = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -90,6 +96,13 @@ export default function RootLayout({
           <SiteFooter />
           <Toaster />
         </ThemeProvider>
+        {CF_BEACON_TOKEN && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: CF_BEACON_TOKEN })}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   );

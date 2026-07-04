@@ -14,6 +14,10 @@ export const metadata: Metadata = {
 // before launch.
 const EFFECTIVE_DATE = "June 22, 2026";
 
+// Mirrors the beacon in the root layout: when the Cloudflare Web Analytics
+// token is set, the policy describes it; until then it stays "no analytics".
+const ANALYTICS_ENABLED = Boolean(process.env.NEXT_PUBLIC_CF_BEACON_TOKEN);
+
 function Section({
   title,
   children,
@@ -103,11 +107,21 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="Cookies & analytics">
-            <p>
-              This website does not currently use tracking cookies or website
-              analytics. If we add analytics in the future, we&apos;ll update
-              this policy to explain what&apos;s collected and why.
-            </p>
+            {ANALYTICS_ENABLED ? (
+              <p>
+                This website does not use tracking cookies. We use Cloudflare
+                Web Analytics, a privacy-first service, to see anonymous,
+                aggregate visit counts (like which pages are viewed most). It
+                doesn&apos;t use cookies and doesn&apos;t track or identify
+                individual visitors.
+              </p>
+            ) : (
+              <p>
+                This website does not currently use tracking cookies or website
+                analytics. If we add analytics in the future, we&apos;ll update
+                this policy to explain what&apos;s collected and why.
+              </p>
+            )}
           </Section>
 
           <Section title="Your choices">
