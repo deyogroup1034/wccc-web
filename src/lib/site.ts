@@ -26,6 +26,10 @@ export const ORG_PHONE_DISPLAY = "972-442-4341";
 
 export const ORG_EMAIL = "wyliechristiancare@gmail.com";
 
+// PayPal hosted donate button (same button the legacy site used).
+export const PAYPAL_DONATE_URL =
+  "https://www.paypal.com/donate?hosted_button_id=LAM64RJSET8SG";
+
 // Visit / street address.
 export const ORG_ADDRESS = {
   street: "1310 W. Brown St",

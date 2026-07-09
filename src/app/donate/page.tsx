@@ -6,6 +6,7 @@ import {
   LEGAL_NAME,
   ORG_EIN,
   ORG_MAILING_ADDRESS,
+  PAYPAL_DONATE_URL,
   SITE_NAME,
 } from "@/lib/site";
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   title: "Donate",
   alternates: { canonical: "/donate" },
   description:
-    "Support Wylie Christian Care Center. Give by check or in person today — every gift goes directly to serving families in crisis. Online giving coming soon.",
+    "Support Wylie Christian Care Center. Give securely online through PayPal, by check, or in person — every gift goes directly to serving families in crisis.",
 };
 
 const MAIL_ADDRESS = [
@@ -119,47 +120,57 @@ export default function DonatePage() {
               </Link>
             </div>
 
-            {/* Online — coming soon */}
+            {/* Online — via PayPal */}
             <div className="flex h-full flex-col rounded-2xl border border-[#E8E4DE] bg-cream p-8">
               <h3 className="mb-3 font-serif text-xl font-bold text-navy">
                 Online giving
               </h3>
-              <p className="font-sans text-[15px] leading-[1.7] text-[#666]">
-                Secure online donations are{" "}
-                <span className="font-semibold text-charcoal">coming soon</span>
-                . For now, please give by check or in person.
+              <p className="mb-4 font-sans text-[15px] leading-[1.7] text-[#666]">
+                Give securely through PayPal — credit and debit cards are
+                accepted, no PayPal account needed.
               </p>
+              <a
+                href={PAYPAL_DONATE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto font-sans text-sm font-bold text-evergreen transition-all hover:underline"
+              >
+                Give online now →
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Online giving placeholder (Phase 3 processor embed) ── */}
+      {/* ── Give online (PayPal hosted donate button) ── */}
       <section className="bg-warm-white px-8 py-24">
         <div className="mx-auto max-w-[760px]">
-          {/*
-            PHASE 3: the online donation processor embed (Donorbox / Givebutter /
-            Stripe, etc.) drops in HERE, replacing this placeholder block.
-            Until then this must read as "coming soon" — NOT a working form.
-          */}
-          <div className="rounded-3xl border border-dashed border-navy/25 bg-white p-12 text-center">
+          <div className="rounded-3xl border border-[#E8E4DE] bg-white p-12 text-center">
             <div className="mx-auto mb-5 flex size-14 items-center justify-center rounded-full bg-gold/15 text-gold">
               <HeartIcon className="size-7" />
             </div>
             <div className="mb-2 font-sans text-[11px] font-bold tracking-[0.2em] text-gold-ink uppercase">
-              Coming Soon
+              Give Online
             </div>
             <h2 className="mb-4 font-serif text-[28px] leading-[1.3] font-bold text-navy">
-              Online giving is on the way
+              Give securely online
             </h2>
             <p className="mx-auto mb-8 max-w-[520px] font-sans text-base leading-[1.8] text-charcoal">
-              We&apos;re setting up a secure way to give online. In the
-              meantime, the fastest ways to support our families are by check or
-              in person — thank you for your patience and generosity.
+              Online donations are processed securely by PayPal. You can give
+              with a credit or debit card — no PayPal account required — and
+              you&apos;ll receive a receipt for your records.
             </p>
-            <span className="inline-block rounded-lg bg-navy/[0.06] px-6 py-3 font-sans text-sm font-semibold text-navy/50">
-              Secure online donations — coming soon
-            </span>
+            <a
+              href={PAYPAL_DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-md bg-red px-8 py-3.5 font-sans text-[13px] font-bold tracking-[0.06em] text-white uppercase transition hover:-translate-y-px hover:shadow-[0_4px_16px_rgba(212,88,58,0.4)]"
+            >
+              Donate with PayPal
+            </a>
+            <p className="mt-5 font-sans text-[13px] text-[#888]">
+              You&apos;ll be taken to PayPal&apos;s secure checkout.
+            </p>
           </div>
         </div>
       </section>
