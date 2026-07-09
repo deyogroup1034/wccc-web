@@ -69,7 +69,7 @@ export default function DonatePage() {
         </div>
       </section>
 
-      {/* ── Ways to give right now ── */}
+      {/* ── Ways to give ── */}
       <section className="border-t border-[#E8E4DE] bg-white px-8 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mb-14 text-center">
@@ -77,7 +77,7 @@ export default function DonatePage() {
               Ways to Give
             </div>
             <h2 className="font-serif text-[34px] leading-[1.3] font-bold text-navy">
-              Ways to give right now
+              Three ways to give
             </h2>
           </div>
 
