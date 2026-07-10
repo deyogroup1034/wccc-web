@@ -33,6 +33,10 @@ jobs:
 
       - name: Build (OpenNext → Cloudflare Workers)
         run: npx opennextjs-cloudflare build
+        env:
+          # Cloudflare Web Analytics beacon (src/app/layout.tsx). Unset secret
+          # → beacon simply doesn't render, so this is safe before setup.
+          NEXT_PUBLIC_CF_BEACON_TOKEN: ${{ secrets.NEXT_PUBLIC_CF_BEACON_TOKEN }}
 
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
