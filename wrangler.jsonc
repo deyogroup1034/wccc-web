@@ -11,4 +11,10 @@
   "observability": {
     "enabled": true,
   },
+  "vars": {
+    // Deyo Dash fleet integration (see src/lib/deyo.ts). The companion
+    // LEAD_INGEST_SECRET is a Worker secret.
+    "DEYO_SITE_ID": "ef20cdad-0868-4ab8-8ff5-9ab8cb54d5c8",
+    "DEYO_DASH_URL": "https://deyo-dash.deyogroup.workers.dev",
+  },
 }

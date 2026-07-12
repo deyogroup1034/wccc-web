@@ -2,6 +2,7 @@
 
 import { sendEmail } from "@/lib/email";
 import { contactSchema, reasonLabel } from "@/lib/validation/contact";
+import { postLeadToDeyoDash } from "@/lib/deyo";
 import { ORG_EMAIL, ORG_PHONE_DISPLAY } from "@/lib/site";
 
 export type ContactResult = { ok: true } | { ok: false; error: string };
@@ -55,6 +56,9 @@ export async function sendContactMessage(
       console.error("Resend error:", result.error);
       return { ok: false, error: GENERIC_ERROR };
     }
+    // Report the lead to Deyo Dash monitoring/reporting. Best-effort — the
+    // visitor's message already went through; a webhook hiccup stays ours.
+    await postLeadToDeyoDash({ name, email, detail: { reason, message } });
     return { ok: true };
   } catch (err) {
     console.error("Contact send failed:", err);
