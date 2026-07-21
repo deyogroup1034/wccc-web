@@ -2,9 +2,30 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // The Cloudflare Workers runtime has no sharp-based image optimizer, so
-    // serve images as-is. Revisit with Cloudflare Images in the SEO/launch pass.
+    // Serve images as-is for now. Revisit enabling Vercel's image optimizer
+    // in a follow-up pass — flipping this changes every <Image> URL.
     unoptimized: true,
+  },
+  async redirects() {
+    // Legacy domain → new domain, permanent. Order matters: first match wins,
+    // so the donate deep-link maps before the catch-all sends the rest home.
+    const legacyHost = [
+      { type: "host", value: "(www\\.)?wyliecommunitychristiancare\\.org" },
+    ] as const;
+    return [
+      {
+        source: "/how-to-donate.html",
+        has: [...legacyHost],
+        destination: "https://wyliechristiancare.org/donate",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [...legacyHost],
+        destination: "https://wyliechristiancare.org/",
+        permanent: true,
+      },
+    ];
   },
   async headers() {
     return [
@@ -25,7 +46,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-// Enables calling `getCloudflareContext()` (Workers bindings) during `next dev`.
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-initOpenNextCloudflareForDev();
