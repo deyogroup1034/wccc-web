@@ -78,7 +78,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="reason" className={labelClass}>
-          What's this about?
+          What&apos;s this about?
         </label>
         <select
           id="reason"
