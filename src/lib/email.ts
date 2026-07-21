@@ -1,6 +1,10 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Instantiated lazily inside sendEmail: the Resend constructor throws when no
+// API key is available, and this module must stay importable with email
+// unconfigured — the contact action's never-500 fallback (AGENTS.md invariant)
+// depends on it.
+let resend: Resend | null = null;
 
 /**
  * Default sender. Override per-call or via RESEND_FROM_EMAIL once the
@@ -34,6 +38,16 @@ export async function sendEmail({
   from = DEFAULT_FROM,
   replyTo,
 }: SendEmailParams) {
+  if (!process.env.RESEND_API_KEY) {
+    return {
+      data: null,
+      error: {
+        name: "missing_api_key" as const,
+        message: "RESEND_API_KEY is not configured",
+      },
+    };
+  }
+  resend ??= new Resend(process.env.RESEND_API_KEY);
   return resend.emails.send({
     from,
     to,
