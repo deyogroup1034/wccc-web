@@ -29,12 +29,21 @@ export async function sendContactMessage(
   }
 
   const subject = `[Website] ${reasonLabel(reason)} — ${name}`;
+  // Worded to stay true if the sending address changes, so it never needs a
+  // matching edit to RESEND_FROM_EMAIL.
+  const footer =
+    "This notification was sent automatically by the website contact form. " +
+    "To respond, simply reply — replies go straight to the sender's email " +
+    "address. The mailbox this email was sent from is not monitored by staff.";
   const text = [
     `Reason: ${reasonLabel(reason)}`,
     `Name: ${name}`,
     `Email: ${email}`,
     "",
     message,
+    "",
+    "—",
+    footer,
   ].join("\n");
   const html = `
     <p><strong>Reason:</strong> ${escapeHtml(reasonLabel(reason))}</p>
@@ -42,6 +51,8 @@ export async function sendContactMessage(
     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
     <hr />
     <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
+    <hr />
+    <p style="color:#666;font-size:12px">${footer}</p>
   `;
 
   try {
