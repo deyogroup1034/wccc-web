@@ -62,10 +62,6 @@ const PROGRAMS: {
       "Pantry staples",
       "Seasonal items",
     ],
-    image: {
-      src: "/food-pantry.jpg",
-      alt: "Volunteers stocking the Wylie Christian Care Center food pantry",
-    },
     icon: (
       <svg {...ICON}>
         <path d="M12 2L2 7l10 5 10-5-10-5z" />
