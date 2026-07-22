@@ -37,6 +37,9 @@ export async function postLeadToDeyoDash(payload: LeadPayload): Promise<boolean>
   try {
     const res = await fetch(`${DASH_URL}/api/leads`, {
       method: "POST",
+      // Never follow redirects: a stale/misconfigured ingest that bounces to a
+      // login page must read as failure, not as a 200 from the login HTML.
+      redirect: "manual",
       headers: {
         "content-type": "application/json",
         "x-deyo-forms-secret": secret,
@@ -50,8 +53,14 @@ export async function postLeadToDeyoDash(payload: LeadPayload): Promise<boolean>
         test: payload.test ?? false,
       }),
     });
-    if (!res.ok) console.error("Deyo lead webhook rejected:", res.status);
-    return res.ok;
+    if (!res.ok) {
+      console.error("Deyo lead webhook rejected:", res.status);
+      return false;
+    }
+    // Require the ingest's own JSON ack — a 200 from anything else doesn't count.
+    const ack = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+    if (!ack?.ok) console.error("Deyo lead webhook: 200 but no ok ack");
+    return Boolean(ack?.ok);
   } catch (err) {
     console.error("Deyo lead webhook failed:", err);
     return false;
