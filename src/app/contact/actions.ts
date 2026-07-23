@@ -21,6 +21,21 @@ export async function sendContactMessage(
     return { ok: false, error: "Please check the form and try again." };
   }
 
+  // Fleet-standard bot gate: verify the Turnstile token server-side before
+  // doing anything else. Enforced only once TURNSTILE_SECRET_KEY is
+  // configured, so the form keeps working while the widget is being set up.
+  // (The Deyo monitoring synthetic test bypasses this by design — it enters
+  // via the secret-gated /api/contact route, not this action.)
+  const token = (input as { turnstileToken?: unknown } | null)?.turnstileToken;
+  const human = await verifyTurnstile(typeof token === "string" ? token : null);
+  if (!human) {
+    return {
+      ok: false,
+      error:
+        "We couldn't confirm the security check. Please complete the checkbox and try again.",
+    };
+  }
+
   const { name, email, reason, message } = parsed.data;
 
   // Fail gracefully if the key isn't configured yet — never throw at the user.
@@ -74,6 +89,30 @@ export async function sendContactMessage(
   } catch (err) {
     console.error("Contact send failed:", err);
     return { ok: false, error: GENERIC_ERROR };
+  }
+}
+
+/** Server-side Turnstile verification (cloudflare siteverify). */
+async function verifyTurnstile(token: string | null): Promise<boolean> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (!secret) return true; // not configured yet — widget isn't rendered either
+  if (!token) return false;
+  try {
+    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ secret, response: token }),
+    });
+    if (!res.ok) {
+      console.error("turnstile siteverify HTTP", res.status);
+      return false;
+    }
+    const data = (await res.json()) as { success?: boolean; "error-codes"?: string[] };
+    if (!data.success) console.warn("turnstile rejected:", data["error-codes"]);
+    return Boolean(data.success);
+  } catch (err) {
+    console.error("turnstile siteverify failed:", err);
+    return false;
   }
 }
 

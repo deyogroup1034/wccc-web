@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { sendContactMessage } from "@/app/contact/actions";
+import { Turnstile, resetTurnstile, turnstileConfigured } from "@/components/turnstile";
 import {
   CONTACT_REASONS,
   contactSchema,
@@ -27,15 +28,18 @@ export function ContactForm() {
     defaultValues: { reason: "general" },
   });
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   async function onSubmit(data: ContactInput) {
     setSubmitError(null);
-    const result = await sendContactMessage(data);
+    const result = await sendContactMessage({ ...data, turnstileToken });
     if (result.ok) {
       toast.success(
         "Thank you — your message is on its way. We'll be in touch soon.",
       );
       reset();
+      setTurnstileToken(null);
+      resetTurnstile(); // token is single-use; re-arm for another message
     } else {
       setSubmitError(result.error);
       toast.error("We couldn't send your message.");
@@ -112,6 +116,8 @@ export function ContactForm() {
         )}
       </div>
 
+      <Turnstile onToken={setTurnstileToken} />
+
       {submitError && (
         <div
           role="alert"
@@ -123,7 +129,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || (turnstileConfigured() && !turnstileToken)}
         className="rounded-lg bg-evergreen px-7 py-3.5 font-sans text-[15px] font-bold text-white transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(46,125,79,0.3)] disabled:pointer-events-none disabled:opacity-60"
       >
         {isSubmitting ? "Sending…" : "Send message"}
